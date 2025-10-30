@@ -1,0 +1,504 @@
+
+.privacy-policy-page {
+    background-color: var(--bg-color);
+    min-width: 100vw;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 100px;
+}
+
+.privacy-policy-page .header {
+    background: linear-gradient(270deg, #114199, dodgerblue, #114199);
+    background-size: 600% 600%;
+    animation: TermsHeroradientFlow 15s ease infinite;
+    height: 470px;
+    display: flex;
+    justify-content: center; align-items: center;
+}
+.privacy-policy-page .header h1 {
+    font-weight: bold;
+    font-size: 60px;
+    font-family: Inter, sans-serif;
+    color: white;
+    text-align: center;
+}
+.privacy-policy-page .header h2 {
+    font-weight: 500;
+    font-size: 20px;
+    font-family: Inter, sans-serif;
+    color: rgb(167, 192, 212);
+    text-align: center;
+}
+.privacy-policy-page .main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 95vw;
+    max-width: 1400px;
+    justify-self: center;
+    height: 100%;
+    margin-top: 80px;
+}
+.privacy-policy-page .information-container {
+    width: 70%;
+    height: 100%;
+}
+.privacy-policy-page .links-container {
+    width: 30%;
+    height: 100vh;
+    position: relative;
+}
+.privacy-policy-page .links-container .nav-container {
+    background-color: var(--secondary-bg-color);
+    padding: 20px;
+    border-radius: 15px;
+    position: fixed;
+    top: 500px;
+    right: 10px;
+    max-width: 400px;
+    transition: all 0.3s;
+}
+.privacy-policy-page .links-container .nav-container.scrolled {
+  top: 200px;
+}
+.privacy-policy-page .links-container .nav-container h5 {
+    font-weight: 600;
+    font-family: Inter, sans-serif;
+    font-size: 19px;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+.privacy-policy-page .links-container .nav-container a {
+    text-decoration: none;
+}
+.privacy-policy-page .links-container .nav-container h6 {
+    color: var(--light-paragraph-color);
+    font-weight: 400;
+    background-color: var(--privacy-sec-links-bg);
+    padding: 4px;
+    padding-left: 10px;
+    border-radius: 9px;
+}
+.privacy-policy-page .links-container .nav-container h6:hover {
+    background-color: var(--privacy-sec-hover-links-bg);
+}
+
+.privacy-policy-page .information-container .updated-date{
+    margin-bottom: 30px;
+}
+.privacy-policy-page .information-container .updated-date h5{
+    color: var(--text-color);
+    font-size: 18px;
+    font-family: Inter; font-weight: bold;
+    margin: 0;
+}
+.privacy-policy-page .information-container .updated-date p{
+    color: var(--light-paragraph-color);
+    font-size: 17px; margin: 0;
+}
+
+.privacy-policy-page .information-container h1 {
+    color: var(--privacy-info-headings);
+    font-weight: bold;
+    font-size: 23px;
+    margin-top: 35px;
+    scroll-margin-top: 100px;
+}
+.privacy-policy-page .information-container h6 {
+    color: var(--privacy-info-paragraphs);
+    font-weight: 400;
+    line-height: 107%;
+    font-size: 17px;
+}
+.privacy-policy-page .information-container ul li {
+    color: var(--privacy-info-bulletedTexts);
+    font-weight: 400;
+    line-height: 107%;
+    font-size: 16px;
+    padding-left: 1px;
+    margin-top: 4px;
+}
+
+@media (max-width: 1340px) {
+    .privacy-policy-page .main-container {
+        flex-direction: column;
+        margin-top: 60px;
+    }
+    .privacy-policy-page .information-container {
+        width: 100%;
+        order: 2;
+    }
+    .privacy-policy-page .links-container {
+        width: 100%;
+        height: auto;
+        order: 1;
+    }
+    .privacy-policy-page .links-container .nav-container {
+        background-color: transparent;
+        padding: 0px;
+        position: static;
+        max-width: 700px;
+        margin-bottom: 40px;
+    }
+    .privacy-policy-page .links-container .nav-container h6 {
+        color: var(--privacy-mobile-screen-links-bg);
+        background-color: transparent;
+        padding: 2px;
+        padding-left: 5px;
+        font-weight: 600;
+    }
+    .privacy-policy-page .links-container .nav-container h6:hover {
+        background-color: var(--privacy-sec-hover-links-bg);
+    }
+}
+@media (max-width: 720px) {
+    .privacy-policy-page .header {
+        padding-top: 20px;
+        height: 420px;
+    }
+    .privacy-policy-page .header h1 {
+        font-size: 40px;
+    }
+    .privacy-policy-page .header h2 {
+        font-size: 17px;
+    }
+    .privacy-policy-page .information-container .updated-date{
+        margin-bottom: 10px;
+    }
+    .privacy-policy-page .information-container .updated-date h5{
+        font-size: 16px;
+    }
+    .privacy-policy-page .information-container .updated-date p{
+        font-size: 16px;
+    }
+    .privacy-policy-page .information-container h1 {
+        font-size: 20px;
+        margin-top: 25px;
+    }
+    .privacy-policy-page .information-container h6 {
+        font-size: 16px;
+    }
+}
+
+/* for the founder terms styles */
+
+.founder-terms-page {
+    background-color: var(--bg-color);
+    min-width: 100vw;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 100px;
+}
+
+.founder-terms-page .header {
+    background: linear-gradient(270deg, #114199, dodgerblue, #114199);
+    background-size: 600% 600%;
+    animation: TermsHeroradientFlow 15s ease infinite;
+    height: 470px;
+    display: flex;
+    justify-content: center; align-items: center;
+}
+@keyframes TermsHeroradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.founder-terms-page .header h1 {
+    font-weight: bold;
+    font-size: 60px;
+    font-family: Inter, sans-serif;
+    line-height: 95%;
+    color: white;
+    text-align: center;
+}
+.founder-terms-page .header h2 {
+    font-weight: 500;
+    font-size: 19px;
+    font-family: Inter, sans-serif;
+    color: rgb(167, 192, 212);
+    text-align: center;
+}
+.founder-terms-page .header .hero-btn-container button {
+    margin-top: 30px;
+    padding: 8px 14px;
+    font-weight: bold;
+    border-radius: 9999px;
+    font-size: 19px;
+    font-family: Inter, sans-serif;
+    min-height: 50px;
+    min-width: 210px;
+}
+.founder-terms-page .header .hero-btn-container .primary-btn {
+    background-color: white;
+    color: #007bff;
+    border: none;
+    transition: all 0.3s;
+    margin-right: 20px;
+}
+.founder-terms-page .header .hero-btn-container .primary-btn:hover {
+    background-image: linear-gradient(135deg, #f0f0f0, #f0f0f0);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    transform: scale(1.03);
+}
+
+.founder-terms-page .header .hero-btn-container .secondary-btn {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    transition: all 0.3s;
+}
+.founder-terms-page .header .hero-btn-container .secondary-btn:hover {
+    background-color: #2f80ed;
+    color: white;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    transform: scale(1.03);
+}
+
+.founder-terms-page .main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 95vw;
+    max-width: 1400px;
+    justify-self: center;
+    height: 100%;
+    margin-top: 80px;
+}
+.founder-terms-page .information-container {
+    width: 70%;
+    height: 100%;
+}
+.founder-terms-page .links-container {
+    width: 30%;
+    height: 100vh;
+    position: relative;
+}
+.founder-terms-page .links-container .nav-container {
+    background-color: var(--secondary-bg-color);
+    padding: 20px;
+    border-radius: 15px;
+    position: fixed;
+    top: 500px;
+    right: 10px;
+    max-width: 400px;
+    transition: all 0.3s;
+}
+.founder-terms-page .links-container .nav-container.scrolled {
+  top: 200px;
+}
+.founder-terms-page .links-container .nav-container h5 {
+    font-weight: 600;
+    font-family: Inter, sans-serif;
+    font-size: 19px;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+.founder-terms-page .links-container .nav-container a {
+    text-decoration: none;
+}
+.founder-terms-page .links-container .nav-container h6 {
+    color: var(--light-paragraph-color);
+    font-weight: 400;
+    background-color: var(--privacy-sec-links-bg);
+    padding: 4px;
+    padding-left: 10px;
+    border-radius: 9px;
+}
+.founder-terms-page .links-container .nav-container h6:hover {
+    background-color: var(--privacy-sec-hover-links-bg);
+}
+
+.founder-terms-page .information-container .updated-date{
+    margin-bottom: 30px;
+}
+.founder-terms-page .information-container .updated-date h5{
+    color: var(--text-color);
+    font-size: 18px;
+    font-family: Inter; font-weight: bold;
+    margin: 0;
+}
+.founder-terms-page .information-container .updated-date p{
+    color: var(--light-paragraph-color);
+    font-size: 17px; margin: 0;
+}
+
+.founder-terms-page .information-container h1 {
+    color: var(--privacy-info-headings);
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 35px;
+    scroll-margin-top: 100px;
+    font-family: Inter, sans-serif;
+}
+.founder-terms-page .information-container h6 {
+    color: var(--privacy-info-paragraphs);
+    font-weight: 400;
+    line-height: 107%;
+    font-size: 17px;
+}
+.founder-terms-page .information-container p {
+    font-size: 16px;
+    line-height: 119%;
+}
+.founder-terms-page .information-container ul li {
+    color: var(--privacy-info-bulletedTexts);
+    font-weight: 400;
+    line-height: 107%;
+    font-size: 16px;
+    padding-left: 1px;
+    margin-top: 4px;
+    font-family: sans-serif;
+}
+.founder-terms-page .information-container ul li .bolded {
+    font-weight: 600;
+}
+.founder-terms-page .information-container .risk-policies {
+    margin-left: 20px;
+}
+.founder-terms-page .information-container .risk-policies .bulleted-arrow {
+    color: var(--paragraph-color);
+}
+.founder-terms-page .information-container .risk-policies h5 {
+    margin: 0;
+    margin-top: 20px;
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    color: var(--text-color);
+}
+.founder-terms-page .information-container .bottom-cta {
+    margin-top: 40px;
+    background-color: #1e3a8a; 
+    color: #ffffff; 
+    padding: 20px 60px;
+    padding-left: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.founder-terms-page .information-container .bottom-cta h4 {
+    text-align: left;
+    font-family: Inter, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.6;
+    margin: 0 auto;
+    color: #ffffff;
+}
+
+@media (max-width: 1340px) {
+    .founder-terms-page .main-container {
+        flex-direction: column;
+        margin-top: 60px;
+    }
+    .founder-terms-page .information-container {
+        width: 100%;
+        order: 2;
+    }
+    .founder-terms-page .links-container {
+        width: 100%;
+        height: auto;
+        order: 1;
+    }
+    .founder-terms-page .links-container .nav-container {
+        background-color: transparent;
+        padding: 0px;
+        position: static;
+        max-width: 700px;
+        margin-bottom: 40px;
+    }
+    .founder-terms-page .links-container .nav-container h6 {
+        color: var(--privacy-mobile-screen-links-bg);
+        background-color: transparent;
+        padding: 2px;
+        padding-left: 5px;
+        font-weight: 600;
+    }
+    .founder-terms-page .links-container .nav-container h6:hover {
+        background-color: var(--privacy-sec-hover-links-bg);
+    }
+    .founder-terms-page .information-container .bottom-cta h4 {
+        text-align: center;
+    }
+}
+@media (max-width: 990px) {
+    .founder-terms-page .header .hero-btn-container button {
+        margin-top: 10px;
+    }
+    .founder-terms-page .information-container .bottom-cta {
+        margin-top: 40px;
+        width: 97%;
+    }
+    .founder-terms-page .information-container .bottom-cta h4 {
+        text-align: left;
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 130%;
+    }
+}
+@media (max-width: 720px) {
+    .founder-terms-page .header h1 {
+        font-size: 40px;
+    }
+    .founder-terms-page .header .hero-btn-container button {
+        padding: 6px 9px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        min-width: auto;
+        min-height: auto;
+    }
+    .founder-terms-page .header .hero-btn-container .primary-btn {
+        margin-right: 10px;
+    }
+    .founder-terms-page .information-container .updated-date{
+        margin-bottom: 10px;
+    }
+    .founder-terms-page .information-container .updated-date h5{
+        font-size: 16px;
+    }
+    .founder-terms-page .information-container .updated-date p{
+        font-size: 16px;
+    }
+    .founder-terms-page .header .hero-btn-container button {
+        margin-top: 10px;
+    }
+    .founder-terms-page .information-container .bottom-cta {
+        margin-top: 40px;
+        width: 97%;
+        padding: 16px 19px;
+    }
+    .founder-terms-page .information-container .bottom-cta h4 {
+        text-align: left;
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 130%;
+    }
+    .founder-terms-page .information-container .risk-policies {
+        margin-left: 0px;
+    }
+    .founder-terms-page .information-container h1 {
+        font-size: 20px;
+        margin-top: 25px;
+    }
+    .founder-terms-page .information-container h6 {
+        margin-top: -3px;
+        font-size: 15px;
+    }
+    .founder-terms-page .information-container p {
+        font-size: 16px;
+        line-height: 119%;
+    }
+    .founder-terms-page .information-container ul li {
+        font-size: 15px;
+        margin-left: -9px;
+        margin-top: 8px;
+    }
+    .founder-terms-page .information-container ol li {
+        font-size: 15px;
+        margin-left: -9px;
+        margin-top: 4px;
+    }
+}
+

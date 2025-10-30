@@ -1,0 +1,1075 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+html,
+body {
+    overflow-x: hidden;
+    justify-self: center;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+.waitlist-form-page {
+    background-color: var(--bg-color);
+    width: 100%;
+    height: 100vh;
+    height: 100%;
+    /* --top-glow-bg: rgb(13, 13, 14);
+  --nav-transparent-bg: rgba(9, 34, 71, 0.712);
+  --secondary-bg-color: #161616; */
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 0px;
+    margin: 0px;
+}
+
+.form-hero {
+    background-image:
+        radial-gradient(1200px 800px at 10% 20%, rgba(255, 255, 255, 0.04), transparent 10%),
+        linear-gradient(240deg, #0b63ff 0%, #5b2df0 38%, #0086ff 100%);
+    height: 700px;
+    width: 100%;
+    margin-top: 0px;
+    text-align: left;
+    color: white;
+    position: relative;
+    padding-bottom: 10px;
+    z-index: 1;
+    overflow: hidden;
+    background-size: 200% 200%;
+    animation: formHeroGradientShift 15s ease infinite;
+}
+@keyframes formHeroGradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.hero-content {
+    max-width: 1400px;
+    width: 100%;
+    height: 100%;
+}
+.form-hero h1 {
+    font-size: 48px;
+    font-family: Space Grotesk, Inter, sans-serif;
+    font-weight: bold;
+    line-height: 102%;
+}
+
+.form-hero h2 {
+    font-size: 22px;
+    font-family: Inter;
+    font-weight: 400;
+}
+
+.form-hero .cta-btn {
+    background-color: #1f9aff;
+    color: white;
+    border: none;
+    font-family: Inter;
+    font-size: 19px;
+    font-weight: bold;
+    margin-top: 19px;
+    border-radius: 19px;
+    padding: 10px 50px;
+    transition: all 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
+    min-height: 60px;
+}
+
+.form-hero .cta-btn:hover {
+    transform: scale(1.02);
+    background-color: #1f6dff;
+    box-shadow: 0 6px 20px rgba(30, 64, 175, 0.5);
+}
+
+.form-hero .secondary-btn {
+    background: transparent;
+    color: #ffffff;
+    font-weight: bold;
+    border: 2px solid #ffffff;
+    font-size: 19px;
+    margin-top: 19px;
+    border-radius: 19px;
+    padding: 10px 50px;
+    transition: all 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(11, 32, 56, 0.4);
+    transition: all 0.3s;
+    min-height: 60px;
+}
+
+.form-hero .secondary-btn:hover {
+    color: rgb(0, 0, 0);
+    transform: scale(1.02);
+    background: linear-gradient(90deg, hsl(0, 0%, 100%));
+    box-shadow: 0 6px 20px rgba(36, 147, 251, 0.5);
+}
+
+.form-hero .mockup {
+    width: 90%;
+    height: auto;
+}
+
+.form-hero h1,
+h2,
+button {
+    z-index: 2;
+}
+
+@media (min-width: 1200px) {
+    .form-hero h1 {
+        font-size: 74px;
+        max-width: 1100px;
+        font-family: Space Grotesk;
+        font-weight: 700;
+    }
+}
+@media (max-width: 992px) {
+    .form-hero {
+        height: 890px;
+    }
+    .form-hero .mockup {
+        margin-top: -200px;
+        height: 360px;
+        margin-right: auto;
+        margin-left: auto;
+        width: auto;
+    }
+    .form-hero h1 {
+        margin-top: 70px;
+        text-align: center;
+    }
+    .form-hero h2 {
+        text-align: center;
+    }
+}
+@media (max-width: 700px) {
+    .form-hero {
+        height: 690px;
+        background-image: linear-gradient(240deg, #0044ff, #4715fa, #5a15fa, #0077ff);
+    }
+    .form-hero .mockup {
+        margin-top: -90px;
+        width: 90%;
+        max-width: 350px;
+        margin-right: auto;
+        margin-left: auto;
+        height: auto;
+    }
+    .form-hero h1 {
+        margin-top: 40px;
+        font-size: 45px;
+    }
+
+    .form-hero h2 {
+        font-size: 16px;
+        font-family: Inter;
+        font-weight: 400;
+    }
+
+    .form-hero .cta-btn {
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 19px;
+        padding: 8px 19px;
+        min-height: auto;
+    }
+
+    .form-hero .secondary-btn {
+        font-size: 16px;
+        margin-top: 19px;
+        padding: 8px 19px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+        min-height: auto;
+    }
+}
+@media (max-width: 640px) {
+    .form-hero {
+        height: 650px;
+    }
+    .form-hero h1 {
+        font-size: 43px;
+    }
+}
+@media (max-width: 335px) {
+    .form-hero .cta-btn {
+        padding: 8px 9px;
+    }
+
+    .form-hero .secondary-btn {
+        padding: 8px 9px;
+    }
+}
+
+.waitlist-form-page .form-section {
+    margin-top: 130px;
+    position: relative;
+}
+
+.waitlist-form-page .form-section img {
+    position: absolute;
+    left: 50%;
+    top: -190px;
+    transform: translateX(-50%);
+    width: 120px;
+    height: auto;
+    z-index: 3;
+}
+
+.waitlist-form-page .form-section h1 {
+    color: var(--text-color);
+    font-size: 34px;
+    font-weight: 500;
+    font-family: Inter;
+}
+
+.waitlist-form-page .form-section h5 {
+    color: var(--paragraph-color);
+    font-size: 20px;
+    max-width: 1000px;
+    width: 98%;
+    font-weight: 400;
+    font-family: Inter;
+}
+
+.waitlist-form-page .form-container {
+    margin-top: 50px;
+    background-color: var(--secondary-bg-color);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    padding: 20px;
+    width: 93%;
+    margin-left: -3px;
+    max-width: 1000px;
+    border-radius: 20px;
+    border: 2px solid rgba(0, 89, 255, 0.247);
+    padding-bottom: 0px;
+    justify-self: center;
+}
+
+.waitlist-form-page .form-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(135deg, #00f0ff, #7b2ff7, #ff00cc);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderGlow 6s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.waitlist-form-page .form-container input {
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: var(--form-inputs-bg);
+    border: 1px solid var(--form-inputs-border);
+    color: var(--form-inputs-color);
+    padding: 6px 9px;
+    padding-top: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 0 3px rgba(31, 32, 32, 0.1);
+    font-size: 15px;
+    display: flex;
+    min-height: 50px;
+    outline: none;
+}
+
+.waitlist-form-page .subscription-plan-row {
+    min-height: 50px;
+}
+
+.checkbx-container input#defaultCheck1 {
+    min-width: 30px !important;
+    min-height: 20px !important;
+}
+
+.waitlist-form-page .form-container input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px var(--form-inputs-bg) inset !important;
+    box-shadow: 0 0 0px 1000px var(--form-inputs-bg) inset !important;
+    -webkit-text-fill-color: var(--form-inputs-color) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.waitlist-form-page .form-container input:autofill {
+    filter: none !important;
+    background: var(--form-inputs-bg) !important;
+    color: var(--form-inputs-color) !important;
+}
+
+.waitlist-form-page .form-container .name-row,
+.email-row,
+.wa-row,
+.subscription-plan-row,
+.company-row,
+.website-row,
+.role-row {
+    position: relative;
+}
+
+.waitlist-form-page .form-container .sale-float-label {
+    position: absolute;
+    top: 14px;
+    left: 24px;
+    color: var(--text-color);
+    font-size: 17px;
+    font-weight: 400;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.waitlist-form-page .form-container .sale-float-label.no-move {
+    position: absolute;
+    top: 12px;
+    left: 24px;
+    color: var(--text-color);
+    font-size: 17px;
+    font-weight: 400;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.waitlist-form-page .form-container .name-row.active .sale-float-label,
+.name-row:focus-within .sale-float-label,
+.email-row.active .sale-float-label,
+.email-row:focus-within .sale-float-label,
+.wa-row.active .sale-float-label,
+.wa-row:focus-within .sale-float-label,
+.company-row.active .sale-float-label,
+.company-row:focus-within .sale-float-label,
+.website-row.active .sale-float-label,
+.website-row:focus-within .sale-float-label,
+.role-row.active .sale-float-label,
+.role-row:focus-within .sale-float-label {
+    top: 2px;
+    left: -0px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+    padding: 3px 9px;
+    border-radius: 12px;
+}
+
+.waitlist-form-page .form-container .optional-label {
+    position: absolute;
+    display: flex;
+    right: 20px;
+    top: 15px;
+    font-size: 15px;
+    color: var(--paragraph-color);
+    font-style: italic;
+    pointer-events: none;
+    font-size: 16px;
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+.waitlist-form-page .form-container .company-row.active .optional-label,
+.company-input:focus .optional-label {
+    display: none;
+    opacity: 0;
+}
+
+.pricing-plan-dropdown {
+    z-index: 30000;
+    width: 500px;
+}
+
+.waitlist-form-page .form-container button {
+    width: 100%;
+    line-height: normal;
+    margin-top: 1px;
+    padding: 9px 16px;
+    border-radius: 7px;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.waitlist-form-page .form-container .cta-btn {
+    background-color: #0077ff;
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
+
+.waitlist-form-page .form-container .cta-btn:hover {
+    background-color: #044ff1;
+    transform: scale(1.03);
+}
+
+.waitlist-form-page .form-container .secondary-btn {
+    background: linear-gradient(90deg, #4e46e5, #6a6cf7c7);
+    color: white;
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+}
+
+.waitlist-form-page .form-container .secondary-btn:hover {
+    background: linear-gradient(90deg, #4F46E5, #6366F1);
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5);
+}
+
+.waitlist-form-page .form-container .checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border-radius: 4px;
+    position: relative;
+    margin-right: 7px;
+}
+.waitlist-form-page .form-container .checkbx-container p {
+    line-height: 0px;
+}
+.waitlist-form-page .form-container .checkbox:checked {
+    background-color: #0077ff;
+}
+
+.waitlist-form-page .form-container .checkbx-container a {
+    color: #278bfd;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.waitlist-form-page .form-container .checkbx-container a:hover {
+    text-decoration: underline;
+}
+
+.waitlist-form-page .form-container p {
+    color: var(--paragraph-color);
+    text-align: left;
+    font-size: 16px;
+}
+
+.waitlist-form-page .form-container .btn-supports {
+    height: 23px;
+    margin-top: 0px;
+    text-align: left;
+    color: var(--light-paragraph-color);
+    font-style: italic;
+}
+
+.waitlist-form-page .form-container .btn-supports.bottom {
+    margin-top: 6px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.waitlist-form-page .form-container .bottom-text {
+    margin-top: 0px;
+    
+}
+
+.waitlist-form-page .benefits-section {
+    margin-top: 70px;
+    padding: 70px 0px;
+    background-color: var(--secondary-bg-color);
+    position: relative;
+    width: 100%;
+    max-width: none;
+    scroll-margin-top: 100px;
+    box-shadow: none;
+}
+
+.waitlist-form-page .benefits-container {
+    margin-top: 70px;
+}
+
+.waitlist-form-page .benefits-container .benefit {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    /* border: 2px solid var(--reserve-benefit-bg); */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: left;
+    padding: 9px 12px;
+    padding-top: 70px;
+    border-radius: 12px;
+    min-height: 170px;
+    max-width: 360px;
+    width: 95%;
+    justify-self: center;
+    flex-direction: column;
+    position: relative;
+    cursor: default;
+    transition: all 0.3s;
+}
+
+.waitlist-form-page .benefits-container .benefit:hover {
+    transform: translateY(-8px);
+    background-color: var(--reserve-benefit-card-hover-bg);
+}
+
+.waitlist-form-page .benefits-container .benefit .icon-container {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #202020;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.waitlist-form-page .benefits-container .benefit .icon-container .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: rgb(0, 238, 255);
+    width: 50px;
+    height: 50px;
+}
+
+.waitlist-form-page .benefits-container .benefit h2 {
+    font-size: 21px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.waitlist-form-page .benefits-container .benefit h6 {
+    font-size: 16px;
+    text-align: center;
+    color: var(--light-paragraph-color);
+    font-weight: 400;
+}
+
+.waitlist-form-page .benefits-section .limited-offer {
+    margin-top: 0px;
+    border: 3px solid none;
+    background-color: transparent;
+    border: 2px solid rgb(35, 52, 209);
+    padding: 3px 7px;
+    border-radius: 9px;
+    padding-top: 13px;
+    padding-left: 13px;
+    max-width: 1100px;
+    width: 96%;
+    justify-self: center;
+}
+
+.waitlist-form-page .benefits-section .limited-offer h5 {
+    color: white;
+    margin-top: 0px;
+    max-width: 360px;
+    justify-self: start;
+    text-align: center;
+    background-color: rgb(35, 52, 209);
+    padding: 4px 12px;
+    padding-top: 8px;
+    border-radius: 6px;
+    font-size: 22px;
+    font-family: Inter;
+    margin-bottom: 0px;
+    font-weight: 700;
+}
+
+.waitlist-form-page .benefits-section .limited-offer p {
+    text-align: start;
+    justify-self: start;
+    font-size: 18px;
+    line-height: 21px;
+    font-family: Inter;
+    font-weight: 300;
+    padding: 8px 12px;
+    border-radius: 12px;
+    color: var(--light-paragraph-color);
+}
+
+.waitlist-form-page .benefits-section .limited-offer .special {
+    font-weight: 600;
+}
+
+.waitlist-form-page .benefits-section .side-images {
+    position: absolute;
+    width: 100px;
+    height: auto;
+}
+
+.waitlist-form-page .benefits-section .side-images.left {
+    top: 20px;
+    left: 20px;
+}
+
+.waitlist-form-page .benefits-section .side-images.right {
+    bottom: 20px;
+    right: 20px;
+}
+
+@media (max-width: 990px) {
+    .waitlist-form-page .form-container .btn-supports {
+        height: auto;
+        margin-top: 3px;
+    }
+}
+
+@media (max-width: 770px) {
+    .waitlist-form-page .form-container .btn-supports {
+        height: auto;
+        margin: 0px;
+        margin-top: 10px;
+        text-align: center !important;
+    }
+    .checkbx-container input#defaultCheck1 {
+        min-width: 30px !important;
+        min-height: 5px !important;
+        max-height: 5px !important;
+    }
+}
+
+@media (max-width: 770px) {
+    .waitlist-form-page .benefits-section h2 {
+        font-size: 16px;
+    }
+
+    .waitlist-form-page .form-section {
+        margin-top: 90px;
+    }
+
+    .waitlist-form-page .form-section img {
+        width: 90px;
+        height: auto;
+        top: -150px;
+    }
+
+    .waitlist-form-page .form-container {
+        margin-top: 24px;
+        padding: 15px 10px;
+    }
+
+    .waitlist-form-page .form-container p {
+        font-size: 15px;
+        text-align: left;
+        line-height: 18px;
+    }
+
+    .waitlist-form-page .form-container .sale-float-label {
+        font-size: 15px;
+    }
+
+    .waitlist-form-page .form-container button {
+        font-size: 16px;
+    }
+
+    .waitlist-form-page .benefits-container {
+        margin-top: 20px;
+        width: 98%;
+    }
+
+    .waitlist-form-page .benefits-container .benefit {
+        min-height: auto;
+        max-height: aauto;
+        justify-self: center;
+    }
+
+    .waitlist-form-page .benefits-section .scary-note .note h2 {
+        line-height: 21px;
+    }
+
+    .waitlist-form-page .form-container .secondary-btn {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 770px) {
+    .waitlist-form-page .benefits-section h1 {
+        margin-bottom: 10px;
+    }
+    .waitlist-form-page .form-container .bottom-text {
+        text-align: center;       
+    }
+    .waitlist-form-page .benefits-container .benefit {
+        padding: 9px 12px;
+        padding-left: 49px;
+        border-radius: 9px;
+        min-width: 97%;
+        margin-top: 10px;
+        background-image: linear-gradient(to bottom, var(--bg-color));
+    }
+
+    .waitlist-form-page .benefits-container .benefit .icon-container {
+        top: 5px;
+        left: 25px;
+        background-color: transparent;
+        width: 20px;
+        height: 30px;
+    }
+
+    .waitlist-form-page .benefits-container .benefit .icon-container .icon {
+        
+        width: 25px;
+        height: 25px;
+    }
+
+    .waitlist-form-page .benefits-container .benefit h2 {
+        text-align: left;
+        font-size: 16px;
+    }
+
+    .waitlist-form-page .benefits-container .benefit h6 {
+        font-size: 16px;
+        text-align: left;
+        margin-top: 7px;
+        margin-left: -31px;
+        font-weight: 400;
+        color: var(--light-paragraph-color);
+    }
+
+    .waitlist-form-page .benefits-section .limited-offer {
+        margin-top: -25px;
+        width: 94%;
+    }
+
+    .waitlist-form-page .benefits-section .limited-offer h5 {
+        font-size: 18px;
+        justify-self: center;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        width: 100%;
+        min-width: 100%;
+        max-width: 400px;
+    }
+
+    .waitlist-form-page .benefits-section .limited-offer p {
+        font-size: 16px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        width: 100%;
+        min-width: 100%;
+        max-width: 400px;
+        line-height: 21px;
+        text-align: center;
+        padding: 13px 9px;
+    }
+
+    .waitlist-form-page .benefits-section .limited-offer .special {
+        font-weight: 500;
+    }
+
+    .waitlist-form-page .benefits-section {
+        padding-bottom: 20px;
+        padding-top: 50px;
+    }
+}
+
+.waitlist-form-page .waitlist-cta-section {
+    padding: 70px 0px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    background: linear-gradient(180deg, #071033 0%, #0b1736 100%);
+}
+
+.waitlist-form-page .waitlist-cta-section .content {
+    max-width: 1200px;
+    width: 97%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.waitlist-form-page .waitlist-cta-section h1 {
+    color: white;
+    font-size: 37px;
+    font-weight: bold;
+    font-family: Space Grotesk, Inter, sans-serif;
+    text-align: left;
+}
+
+.waitlist-form-page .waitlist-cta-section h2 {
+    color: rgb(180, 192, 201);
+    font-size: 19px;
+    font-weight: 300;
+    font-family: Inter, sans-serif;
+    text-align: left;
+    margin-bottom: 30px;
+}
+.waitlist-form-page .waitlist-cta-section .bolded{
+    font-weight: 400;
+    color: rgb(233, 233, 233);
+}
+.waitlist-form-page .waitlist-cta-section .trust-bullets-container {
+    margin-top: 20px;
+}
+
+.waitlist-form-page .waitlist-cta-section .trust-bullets {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.waitlist-form-page .waitlist-cta-section .trust-bullets .check-mark {
+    width: 20px;
+    height: 20px;
+    color: #22c55e;
+    flex-shrink: 0;
+}
+
+.waitlist-form-page .waitlist-cta-section .trust-bullets h4 {
+    font-size: 20px;
+    text-align: start;
+    font-weight: 500;
+    font-family: Inter, sans-serif;
+    color: #e5e7eb;
+    margin: 0;
+}
+
+.waitlist-form-page .waitlist-cta-section .btn-container {
+    margin-top: 0px;
+    width: 100%;
+}
+.waitlist-form-page .waitlist-cta-section .btn-container p {
+    text-align: left;
+    color: var(--text-color);
+    font-size: 17px;
+}
+.waitlist-form-page .waitlist-cta-section .btn-container a {
+    width: fit-content;
+    text-decoration: none;
+    display: flex;
+    text-align: left;
+}
+
+.waitlist-form-page .waitlist-cta-section .main-btn {
+    padding: 9px 10px;
+    background-color: #2563EB;
+    border: 2px solid #2563EB;
+    font-weight: 600;
+    color: white;
+    min-width: 200px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.waitlist-form-page .waitlist-cta-section .main-btn:hover {
+    background-color: #0145da;
+}
+
+.waitlist-form-page .waitlist-cta-section .secondary-btn {
+    padding: 9px 10px;
+    background-color: transparent;
+    border: 2px solid white;
+    min-width: 200px;
+    font-weight: 600;
+    color: white;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.waitlist-form-page .waitlist-cta-section .secondary-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+.waitlist-form-page .waitlist-cta-section .top-move-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--text-color);
+    background-color: var(--secondary-bg-color);
+    border-radius: 50%;
+    padding: 2px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.waitlist-form-page .waitlist-cta-section .top-move-btn:hover {
+    transform: scale(1.2);
+}
+
+.waitlist-form-page .waitlist-cta-section a {
+    text-decoration: none;
+}
+
+.waitlist-form-page .waitlist-cta-section a:hover {
+    text-decoration: underline;
+}
+
+.waitlist-form-page .waitlist-cta-section a:hover p {
+    color: rgb(4, 116, 150);
+}
+
+.waitlist-form-page .waitlist-cta-section a p {
+    color: rgb(146, 218, 240);
+    text-align: left;
+    font-weight: 600;
+    margin-top: 26px;
+    font-size: 17px;
+    margin-left: 20px;
+    transition: all 0.3s;
+}
+
+@media (min-width: 1200px) {
+    .waitlist-form-page .waitlist-cta-section .trust-bullets h4 {
+        font-size: 27px;
+    }
+
+    .waitlist-form-page .waitlist-cta-section .trust-bullets .check-mark {
+        width: 30px;
+        height: 30px;
+        stroke-width: 4px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .waitlist-form-page div#form-section {
+        scroll-margin-top: 200px;
+    }
+
+    .waitlist-form-page .benefits-section {
+        scroll-margin-top: 200px;
+    }
+}
+
+@media (max-width: 996px) {
+    .waitlist-form-page .waitlist-cta-section {
+        width: 99%;
+        justify-self: center;
+    }
+    .waitlist-form-page .waitlist-cta-section h1 {
+        font-size: 30px;
+    }
+    .waitlist-form-page .waitlist-cta-section h2 {
+        font-size: 16px;
+        margin-bottom: 18px;
+    }
+    .waitlist-form-page .waitlist-cta-section .btn-container p {
+        text-align: left;
+        color: var(--light-paragraph-color);
+        font-size: 15px;
+        font-style: italic;
+    }
+    .waitlist-form-page .waitlist-cta-section .main-btn {
+        min-width: auto;
+        padding: 7px 19px;
+    }
+    .waitlist-form-page .waitlist-cta-section .secondary-btn {
+        min-width: auto;
+        padding: 7px 19px;
+    }
+    .waitlist-form-page .waitlist-cta-section .trust-bullets-container {
+        margin-top: 25px;
+    }
+    .waitlist-form-page .waitlist-cta-section .trust-bullets {
+        gap: 3px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+    }
+    .waitlist-form-page .waitlist-cta-section .trust-bullets h4 {
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 700px) {
+    .waitlist-form-page .form-section {
+        width: 98%;
+        justify-self: center;
+    }
+
+    .waitlist-form-page .form-section h1,
+    .waitlist-form-page .benefits-section h1 {
+        font-size: 30px;
+        width: 96%;
+    }
+
+    .waitlist-form-page .form-section h5 {
+        font-size: 16px;
+    }
+
+    .waitlist-form-page .waitlist-cta-section {
+        width: 100%;
+        padding-bottom: 30px;
+    }
+
+    .waitlist-form-page .waitlist-cta-section h1 {
+        width: 96%;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .waitlist-form-page .waitlist-cta-section h2 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .waitlist-form-page .waitlist-cta-section p {
+        font-size: 16px;
+        line-height: 100%;
+        width: 97%;
+        margin-top: 20px;
+    }
+    .waitlist-form-page .waitlist-cta-section .btn-container a {
+        width: 97%; display: flex;
+        justify-self: center; align-self: center;
+    }
+    .waitlist-form-page .waitlist-cta-section .main-btn, .secondary-btn {
+        min-width: 100%;
+        width: 100%;
+    }
+    .waitlist-form-page .waitlist-cta-section .btn-container p {
+        margin-top: 9px; text-align: left;
+        line-height: 130%;
+    }
+    .waitlist-form-page .waitlist-cta-section .top-move-btn {
+        width: 30px;
+        height: 30px;
+    }
+
+    .waitlist-form-page .waitlist-cta-section .trust-bullets-container {
+        margin-top: 10px;
+    }
+
+    .waitlist-form-page .waitlist-cta-section .trust-bullets {
+        margin-top: 0px;
+        padding: 4px 12px;
+        padding-left: 0px;
+        gap: 5px;
+    }
+    .waitlist-form-page .waitlist-cta-section .trust-bullets h4 {
+        font-size: 17px;
+    }
+    .waitlist-form-page .waitlist-cta-section .trust-bullets .check-mark {
+        width: 30px;
+    }
+}
+
+@media (max-width: 360px) {
+    .waitlist-form-page .waitlist-cta-section .main-btn {
+        min-width: auto;
+        padding: 7px 10px;
+        font-size: 16px;
+    }
+
+    .waitlist-form-page .waitlist-cta-section .secondary-btn {
+        min-width: auto;
+        padding: 7px 10px;
+        font-size: 16px;
+    }
+}
