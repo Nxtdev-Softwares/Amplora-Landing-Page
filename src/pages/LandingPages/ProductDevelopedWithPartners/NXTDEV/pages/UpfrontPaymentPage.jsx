@@ -5,6 +5,7 @@ import AmploraLogo from "../../../../../assets/amploraLogo.svg";
 import { Sun } from 'lucide-react';
 import { Moon } from 'lucide-react';
 import { NotebookPen } from 'lucide-react';
+import { BadgeDollarSign } from 'lucide-react';
 import { AlarmClock } from 'lucide-react';
 import { Rocket } from 'lucide-react';
 import { ArrowUp } from 'lucide-react';
@@ -38,7 +39,7 @@ import { Helmet } from "react-helmet";
 import { useSearchParams } from 'react-router-dom';
 
 
-function WaitListForm() {
+function UpfrontPaymentPage() {
   // Scrolling to the top
   const [searchParams] = useSearchParams();
   const { pathname } = useLocation();
@@ -163,16 +164,16 @@ function WaitListForm() {
         <div className="d-flex justify-content-center align-items-center flex-column container-fluid form-hero">
           <div className="row hero-content d-flex justify-content-center align-items-center">
             <div className="col-12 col-lg-7">
-              <h1>Grow Smarter with Amplora - Before Launch.</h1>
+              <h1>Unlock Full Access to Amplora - Today.</h1>
               <h2>
-                Join Amplora early - the platform for creators who want data-driven growth, not guesswork. Be part of building what comes next.
+                Get full access to Amplora for $150/month - 70% off for the first 5 founding creators.
               </h2>
               <div className="d-flex justify-content-center justify-content-lg-start gap-4">
-                <a href="#form-section">
-                  <button className="cta-btn">Join Waitlist</button>
+                <a href="#upfront-form-section">
+                  <button className="cta-btn">Get Full access</button>
                 </a>
-                <a href="#why-reserve-section">
-                  <button className="secondary-btn">Why Reserve?</button>
+                <a href="#why-upfront-section">
+                  <button className="secondary-btn">Why Pay Upfront?</button>
                 </a>
               </div>
             </div>
@@ -183,14 +184,14 @@ function WaitListForm() {
         </div>
 
         <div
-          id="form-section"
+          id="upfront-form-section"
           className="d-flex justify-content-center align-items-center flex-column form-section text-center"
         >
           <img src={AmploraLogo} alt="Amplora logo" />
 
-          <h1>Join Amplora’s Early Waitlist</h1>
-          <h5 className="d-flex">
-            Secure your early access to Amplora and be part of the first group of creators testing, shaping, and growing with the platform before public launch.
+          <h1>Join as a Founding Member</h1>
+          <h5 className="d-flex justify-content-center">
+            Get full access today and secure your founder-only pricing before it’s gone.
           </h5>
 
           <ScrollReveal className="fade-in-anime">
@@ -240,6 +241,48 @@ function WaitListForm() {
                     />
                   </div>
                 </div>
+
+                <div className="col-12 col-md-6">
+                  <div className="p-0 mb-2">
+                  <Row
+                    className={`subscription-plan-row ${
+                      selectedPlan ? "active" : ""
+                    } justify-content-start px-3`}
+                  >
+                    {!selectedPlan && (
+                      <label className="w-auto pb-2 sale-float-label no-move">
+                        Subscription Plan
+                      </label>
+                    )}
+                    <select
+                      onSelect={(e) => {
+                        setSelectedPlan(e.target.value);
+                      }}
+                      id="product-plan"
+                      className="form-select text-white border-0"
+                      style={{
+                        backgroundColor: "var(--form-inputs-bg)",
+                      }}
+                    >
+                      {plans.map((plan) => {
+                        return (
+                          <option
+                            className='pricing-plan-dropdown'
+                            value={plan.id}
+                            selected={
+                              searchParams
+                                ? searchParams.get("plan") == plan.planName
+                                : false
+                            }
+                          >
+                            {plan.planName}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </Row>   
+                  </div>
+                </div>
                 
                 <div className="col-12 col-md-6">
                 <div
@@ -261,7 +304,7 @@ function WaitListForm() {
                   </div>
                 </div>
               
-                <div className="col-12 d-flex align-items-center">
+                <div className="col-12 col-md-6 d-flex align-items-center">
                   <span className="d-flex gap-0 checkbx-container align-items-center">
                     <input
                       className="form-check-input checkbox"
@@ -271,11 +314,7 @@ function WaitListForm() {
                     <p className='mb-2'>
                       I agree Amplora’s{" "}
                       <a href="/partners/products/amplora/privacy-policy">
-                        Privacy Policy
-                      </a>{" "}
-                      &{" "}
-                      <a href="/partners/products/amplora/TermsOfService">
-                        Terms of Service.
+                        Founder Terms
                       </a>
                     </p>
                   </span>
@@ -289,10 +328,10 @@ function WaitListForm() {
                         addUserToWaitingList(false);
                       }}
                     >
-                      Join Waitlist - It’s Free
+                      💥 Get Full Access Now
                     </button>
                     <p className="btn-supports bottom">
-                      (🆓 Free - early updates & insider access)
+                      Exclusive offer for the first 5 founders.
                     </p>
                 </div>
               
@@ -304,14 +343,14 @@ function WaitListForm() {
         </div>
 
         <div
-          id="why-reserve-section"
+          id="why-upfront-section"
           className="d-flex justify-content-center align-items-center flex-column benefits-section text-center container-fluid"
         >
           {/* <img src={sideImageRocket} alt="" className='d-none d-xxl-flex side-images left'/> */}
-          <MainHeading heading="Be First. Shape the Future of Creator Growth." />
+          <MainHeading heading="Get the Full System - at 70% Off." />
           <div className='d-flex justify-content-center align-items-center' style={{maxWidth: "1190px"}}>
-            <h6 className="default-sub-heading">
-              Amplora isn’t just another analytics tool - it’s a growth partner. Joining the waitlist means you don’t just watch Amplora grow… you help build it.
+            <h6 className="default-sub-heading">              
+              This is your chance to get in before the masses. Amplora is for serious creators who want real data, repeatable growth, and an unfair advantage - early.
             </h6>
           </div>
 
@@ -323,11 +362,11 @@ function WaitListForm() {
               >
                 <div className="benefit d-flex">
                   <div className="icon-container">
-                    <Zap className="icon" />
+                    <BadgeDollarSign className="icon" />
                   </div>
-                  <h2>Early Access</h2>
+                  <h2>Founder-Only Price</h2>
                   <h6>
-                    Be among the first to experience Amplora before public release.
+                    Lock in Amplora for $150/month - 70% off.
                   </h6>
                 </div>
               </div>
@@ -337,45 +376,27 @@ function WaitListForm() {
               >
                 <div className="benefit d-flex">
                   <div className="icon-container">
-                    <CircleStar className="icon" />
+                    <Rocket className="icon" />
                   </div>
-                  <h2>Insider Community</h2>
+                  <h2>Claim Full Access</h2>
                   <h6>
-                    Get access to a private circle of early creators sharing insights and results.
+                    Unlock every feature before public launch.
                   </h6>
                 </div>
               </div>
               <div className="col-12 col-md-3 col-lg-4 p-0">
                 <div className="benefit d-flex">
                   <div className="icon-container">
-                    <Rocket className="icon" />
+                    <CircleStar className="icon" />
                   </div>
-                  <h2>Shape the Product</h2>
+                  <h2>Founder Badge & Priority</h2>
                   <h6>
-                    Your feedback directly helps us refine the platform for creators like you.
+                    Get lifetime recognition and early updates.
                   </h6>
                 </div>
               </div>
             </EachScrollReveal>
           </div>
-          <div className="limited-offer">
-            <h5>
-              First 05 Who Pay Upfront <CornerRightDown />
-            </h5>
-            <p>
-              Lock in the Founders deal{" "}
-              <span className="special">All features for $150/month</span>, get{" early access to "}
-              <span className="special">new features</span>, and earn an 
-              <span className="special"> exclusive badge.</span>
-            </p>
-            <a href="#form-section" className='d-flex mb-2' style={{textDecoration: "none", width: "100px"}}>
-              <button className="default-btn">Join Early Access</button>
-            </a>
-          </div>
-          {/* <div className='scary-note flex-column'>
-                    <div className='note'><h2><span style={{fontWeight: "700"}}>First 5 to Pay Upfront: </span><br/><span style={{fontWeight: "400", color: "var(--light-paragraph-color)"}}> Lock in a 40% lifetime discount when you join Amplora today. </span></h2></div>
-                </div> */}
-          {/* <img src={sideImageBadge} alt="" className='d-none d-xxl-flex side-images right'/> */}
         </div>
 
         <div className="d-flex justify-content-center align-items-center flex-column waitlist-cta-section text-center">
@@ -387,43 +408,43 @@ function WaitListForm() {
             <div className="col-12 col-md-6 col-lg-6 pe-0 pe-md-5 ps-0">
               <Row>
                 <h1>
-                  Ready to Grow with Us?
+                  Don’t Wait for Launch. Be the Launch.
                 </h1>
               </Row>
               <Row>
               <h2>
-                Join the waitlist now, and be part of the first group of creators shaping the next-gen growth platform.
+                Secure your founder-tier access today and start mastering your growth system - for 70% off.
               </h2>
               </Row>
               <div className="d-flex btn-container justify-content-start flex-column">
-                <a href="#form-section">
-                  <button className="main-btn">Join Early Access</button>
+                <a href="#upfront-form-section">
+                  <button className="main-btn">💥 Get Full Access Now</button>
                 </a>
-                <p>( 100% Free - get early updates, insider access & bonuses )</p>
+                <p>( Lifetime discount for first 5 founders, don’t wait. )</p>
               </div>
             </div>
 
             <div className="trust-bullets-container col-12 col-md-6 col-lg-6 ps-0">
               <div className="trust-bullets">
                 <Check className="check-mark" />
-                <h4>Early access to Amplora before launch</h4>
+                <h4>Full access to all current features</h4>
               </div>
               <div className="trust-bullets">
                 <Check className="check-mark" />
-                <h4>Exclusive creator growth checklist</h4>
+                <h4>Founder-only $150/month pricing (worth $500)</h4>
               </div>
 
               <div className="trust-bullets">
                 <Check className="check-mark" />
-                <h4>Private insider community access</h4>
+                <h4>Guaranteed delivery date after payment</h4>
               </div>
               <div className="trust-bullets">
                 <Check className="check-mark" />
-                <h4>Direct influence on product development</h4>
+                <h4>Lifetime recognition as a founding member</h4>
               </div>
 
               <a href="/partners/products/amplora/privacy-policy" id='policy'>
-                <p>View Privacy Policy</p>
+                <p>View founderterms</p>
               </a>
             </div>
           </div>
@@ -434,4 +455,4 @@ function WaitListForm() {
     </>
   );
 }
-export default WaitListForm;
+export default UpfrontPaymentPage;

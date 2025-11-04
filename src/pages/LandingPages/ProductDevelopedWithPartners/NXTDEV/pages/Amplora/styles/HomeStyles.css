@@ -1631,6 +1631,20 @@ body {
     outline: none;
     transition: all 0.3s;
 }
+
+.contact-section .form-container input:-webkit-autofill, textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px var(--contact-inputs-bg) inset !important;
+    box-shadow: 0 0 0px 1000px rgba(31, 32, 32, 0.1) inset !important;
+    -webkit-text-fill-color: var(--form-inputs-color) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.contact-section .form-container input, textarea:-autofill {
+    filter: none !important;
+    background: var(--contact-inputs-bg) !important;
+    color: var(--form-inputs-color) !important;
+}
+
 .contact-section .form-container textarea {
     min-height: 110px;
 }

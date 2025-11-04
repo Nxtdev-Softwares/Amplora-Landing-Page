@@ -58,7 +58,7 @@ function AmploraPrivacyPolicy() {
             </div>
             <h1 id="prIntroduction">1. Introduction</h1>
             <h6>
-              Amplora ("we", "our", "us") is committed to protecting your
+              Amplora is committed to protecting your
               privacy. This Privacy Policy outlines how we collect, use, and
               safeguard your personal information when you access or use our
               services.{" "}

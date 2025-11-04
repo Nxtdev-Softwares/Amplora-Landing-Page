@@ -124,10 +124,14 @@ button {
 
 @media (min-width: 1200px) {
     .form-hero h1 {
-        font-size: 74px;
+        font-size: 62px;
         max-width: 1100px;
         font-family: Space Grotesk;
         font-weight: 700;
+    }
+    .form-hero .mockup {
+        width: 100%;
+        height: auto;
     }
 }
 @media (max-width: 992px) {
@@ -135,7 +139,7 @@ button {
         height: 890px;
     }
     .form-hero .mockup {
-        margin-top: -200px;
+        margin-top: -100px;
         height: 360px;
         margin-right: auto;
         margin-left: auto;
@@ -195,7 +199,7 @@ button {
         height: 650px;
     }
     .form-hero h1 {
-        font-size: 43px;
+        font-size: 33px;
     }
 }
 @media (max-width: 335px) {
@@ -235,6 +239,8 @@ button {
     font-size: 20px;
     max-width: 1000px;
     width: 98%;
+    margin-left: auto;
+    margin-right: auto;
     font-weight: 400;
     font-family: Inter;
 }
@@ -399,9 +405,9 @@ button {
 }
 
 .waitlist-form-page .form-container button {
-    width: 100%;
-    line-height: normal;
-    margin-top: 1px;
+    width: 96%;
+    margin-right: auto; margin-left: auto;
+    line-height: normal; 
     padding: 9px 16px;
     border-radius: 7px;
     font-size: 19px;
@@ -444,7 +450,7 @@ button {
     margin-right: 7px;
 }
 .waitlist-form-page .form-container .checkbx-container p {
-    line-height: 0px;
+    line-height: 18px;
 }
 .waitlist-form-page .form-container .checkbox:checked {
     background-color: #0077ff;
@@ -482,7 +488,6 @@ button {
 
 .waitlist-form-page .form-container .bottom-text {
     margin-top: 0px;
-    
 }
 
 .waitlist-form-page .benefits-section {
@@ -562,8 +567,7 @@ button {
 .waitlist-form-page .benefits-section .limited-offer {
     margin-top: 0px;
     border: 3px solid none;
-    background-color: transparent;
-    border: 2px solid rgb(35, 52, 209);
+    background-color: var(--bg-color);
     padding: 3px 7px;
     border-radius: 9px;
     padding-top: 13px;
@@ -574,12 +578,12 @@ button {
 }
 
 .waitlist-form-page .benefits-section .limited-offer h5 {
-    color: white;
+    color: rgb(36, 36, 36);
     margin-top: 0px;
     max-width: 360px;
     justify-self: start;
     text-align: center;
-    background-color: rgb(35, 52, 209);
+    background-color: rgb(0, 238, 255);
     padding: 4px 12px;
     padding-top: 8px;
     border-radius: 6px;
@@ -597,12 +601,29 @@ button {
     font-family: Inter;
     font-weight: 300;
     padding: 8px 12px;
+    margin-bottom: 3px;
     border-radius: 12px;
     color: var(--light-paragraph-color);
 }
 
 .waitlist-form-page .benefits-section .limited-offer .special {
     font-weight: 600;
+}
+
+.waitlist-form-page .benefits-section .limited-offer .default-btn {
+    padding: 9px 10px;
+    background-color: rgb(164, 201, 255);
+    border: 2px solid #2563EB;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(26, 26, 26);
+    min-width: 200px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.waitlist-form-page .benefits-section .limited-offer .default-btn:hover {
+    background-color: #5086fc;
 }
 
 .waitlist-form-page .benefits-section .side-images {
@@ -639,6 +660,9 @@ button {
         min-width: 30px !important;
         min-height: 5px !important;
         max-height: 5px !important;
+    }
+    .waitlist-form-page .form-container button {
+        width: 90%;
     }
 }
 
@@ -701,7 +725,8 @@ button {
         margin-bottom: 10px;
     }
     .waitlist-form-page .form-container .bottom-text {
-        text-align: center;       
+        margin-bottom: 0px;       
+        margin-left: 3px;
     }
     .waitlist-form-page .benefits-container .benefit {
         padding: 9px 12px;
@@ -743,6 +768,7 @@ button {
     .waitlist-form-page .benefits-section .limited-offer {
         margin-top: -25px;
         width: 94%;
+        border: 2px solid rgb(0, 86, 245);
     }
 
     .waitlist-form-page .benefits-section .limited-offer h5 {
@@ -766,7 +792,6 @@ button {
         text-align: center;
         padding: 13px 9px;
     }
-
     .waitlist-form-page .benefits-section .limited-offer .special {
         font-weight: 500;
     }
@@ -774,6 +799,16 @@ button {
     .waitlist-form-page .benefits-section {
         padding-bottom: 20px;
         padding-top: 50px;
+    }
+}
+
+@media (max-width: 650px) {
+    .waitlist-form-page .benefits-section .limited-offer a {
+        min-width: 100%;
+    }
+    .waitlist-form-page .benefits-section .limited-offer .default-btn {
+        width: 100%;
+        min-width: 100%;
     }
 }
 
@@ -845,8 +880,10 @@ button {
 }
 .waitlist-form-page .waitlist-cta-section .btn-container p {
     text-align: left;
-    color: var(--text-color);
-    font-size: 17px;
+    margin-top: 6px;
+    color: rgb(95, 141, 179);
+    font-size: 15px;
+    font-style: italic;
 }
 .waitlist-form-page .waitlist-cta-section .btn-container a {
     width: fit-content;
@@ -860,6 +897,7 @@ button {
     background-color: #2563EB;
     border: 2px solid #2563EB;
     font-weight: 600;
+    font-size: 20px;
     color: white;
     min-width: 200px;
     border-radius: 20px;
@@ -915,7 +953,6 @@ button {
 .waitlist-form-page .waitlist-cta-section a:hover p {
     color: rgb(4, 116, 150);
 }
-
 .waitlist-form-page .waitlist-cta-section a p {
     color: rgb(146, 218, 240);
     text-align: left;
@@ -942,7 +979,9 @@ button {
     .waitlist-form-page div#form-section {
         scroll-margin-top: 200px;
     }
-
+    .waitlist-form-page .waitlist-cta-section h1 {
+        font-size: 44px;
+    }
     .waitlist-form-page .benefits-section {
         scroll-margin-top: 200px;
     }
@@ -954,17 +993,11 @@ button {
         justify-self: center;
     }
     .waitlist-form-page .waitlist-cta-section h1 {
-        font-size: 30px;
+        font-size: 34px;
     }
     .waitlist-form-page .waitlist-cta-section h2 {
         font-size: 16px;
         margin-bottom: 18px;
-    }
-    .waitlist-form-page .waitlist-cta-section .btn-container p {
-        text-align: left;
-        color: var(--light-paragraph-color);
-        font-size: 15px;
-        font-style: italic;
     }
     .waitlist-form-page .waitlist-cta-section .main-btn {
         min-width: auto;
@@ -1009,7 +1042,9 @@ button {
     }
 
     .waitlist-form-page .waitlist-cta-section h1 {
-        width: 96%;
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
         text-align: center;
         font-size: 30px;
     }

@@ -56,8 +56,19 @@ function Amplora() {
   const navigate = useNavigate();
 
     //header
-    const heroMainText = "Build the audience that builds your business.";
-    const [displayedText, setDisplayedText] = useState("Build the audience that builds your business.");
+    const heroMainText = (
+      <>
+      <span>
+        Build the audience that builds your <span style={{color: "#00FFFF"}}>business.</span>
+      </span>
+      </>
+    );
+    const [displayedText, setDisplayedText] = useState(
+      <>
+      <span>
+        Build the audience that builds your <span style={{color: "#00FFFF"}}>business.</span>
+      </span>
+      </>);
     useEffect(() => {
         let index = 0;
 
@@ -272,9 +283,9 @@ function Amplora() {
                   <Link to="/partners/products/amplora/waitinglist">
                     <button className="main-btn">Join FREE Waitlist</button>
                   </Link>
-                  <Link to="/partners/products/amplora/waitinglist">
+                  <Link to="/partners/products/amplora/UpfrontPaymentPage">
                     <button className="secondary-btn">
-                      Get Lifetime Access
+                      Claim 70% Off Now
                     </button>
                   </Link>
                 </div>
@@ -440,7 +451,7 @@ function Amplora() {
               <a href="/partners/products/amplora/waitinglist">
                 <button className="primary">Join FREE waitlist</button>
               </a>
-              <a href="/partners/products/amplora/waitinglist">
+              <a href="/partners/products/amplora/UpfrontPaymentPage">
                 <button className="secondary">Get lifetime</button>
               </a>
             </div>
@@ -645,7 +656,7 @@ function Amplora() {
                   ]}
                   btnText="Join Waitlist"
                   btnClassName="standard-btn"
-                  buttonPath="/partners/products/amplora/waitinglist?plan=Starter Plan#form-section"
+                  buttonPath="/partners/products/amplora/waitinglist"
                 />
 
                 {/* "AI-powered content tailored to your brand voice",
@@ -666,7 +677,7 @@ function Amplora() {
                   ]}
                   btnText="Join Waitlist"
                   btnClassName="standard-btn"
-                  buttonPath="/partners/products/amplora/waitinglist?plan=Standard Plan#form-section"
+                  buttonPath="/partners/products/amplora/waitinglist"
                 />
 
                 <PricingCards
@@ -685,7 +696,7 @@ function Amplora() {
                   ]}
                   btnText="Be a Founding User"
                   btnClassName="pro-btn"
-                  buttonPath="/partners/products/amplora/waitinglist?plan=Pro Plan#form-section"
+                  buttonPath="/partners/products/amplora/waitinglist"
                 />
 
                 <div className="col-12 col-md-5 d-flex align-items-center price-card-container founding">
@@ -738,16 +749,11 @@ function Amplora() {
                         <h2 className="pb-5">
                           🔒 This offer will never return.
                         </h2>
-                        <button
-                          className="limited-btn"
-                          onClick={() => {
-                            navigate(
-                              "/partners/products/amplora/waitinglist?plan=Founding Deal#form-section"
-                            );
-                          }}
-                        >
+                        <a href="/partners/products/amplora/UpfrontPaymentPage">
+                        <button className="limited-btn">
                           Claim Your Founding Spot
                         </button>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -805,7 +811,7 @@ function Amplora() {
                   <a href="/partners/products/amplora/waitinglist">
                     <button className="primary-btn">Join Free Waitlist</button>
                   </a>
-                  <a href="/partners/products/amplora/waitinglist">
+                  <a href="/partners/products/amplora/UpfrontPaymentPage">
                     <button className="secondary-btn">
                       Claim founder Spot
                     </button>
