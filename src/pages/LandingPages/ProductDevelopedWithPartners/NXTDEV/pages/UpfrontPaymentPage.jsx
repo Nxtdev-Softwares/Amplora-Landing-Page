@@ -142,7 +142,7 @@ function UpfrontPaymentPage() {
     <>
       <Helmet>
         <title>
-          Join the Waiting List | Get Early Access to Amplora | Bininstructions
+          Pay the upfront | Be a founder of Amplora | Bininstructions
           | NXTDEV
         </title>
         <meta
@@ -340,6 +340,7 @@ function UpfrontPaymentPage() {
               </p>
             </div>
           </ScrollReveal>
+
         </div>
 
         <div
