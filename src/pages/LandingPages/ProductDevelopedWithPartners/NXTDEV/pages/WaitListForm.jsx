@@ -19,7 +19,7 @@ import {Col, Row} from "react-bootstrap"
 
 import sideImageBadge from '../../../../../assets/sideImageBadge.png'
 import sideImageRocket from "../../../../../assets/sideImageRocket.png";
-import waitlistMockup from "../../../../../assets/waitlistMockup.png";
+import waitlistMockup from "../../../../../assets/waitlistDashboard.png";
 
 import "./Amplora/styles/WaitListFormPage.css";
 import { useLocation, useParams } from 'react-router';
