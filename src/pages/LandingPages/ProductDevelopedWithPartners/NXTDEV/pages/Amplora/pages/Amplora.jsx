@@ -673,7 +673,7 @@ function Amplora() {
                     "Post seamlessly across Instagram, Threads, Facebook",
                     "Advanced analytics & insights",
                     "Deeper customization & branding control",
-                    "Expanded emil marketing (higher sends, segmentation, basic automation)",
+                    "Expanded emil marketing (higher sends, basic automation)",
                   ]}
                   btnText="Join Waitlist"
                   btnClassName="standard-btn"
