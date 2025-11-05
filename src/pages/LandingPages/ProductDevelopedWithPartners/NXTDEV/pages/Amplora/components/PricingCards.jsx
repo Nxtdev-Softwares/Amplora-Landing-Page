@@ -4,7 +4,7 @@ import proBadge from "../../../../../../../assets/pro-pricing-badge.png";
 function PricingCards(props) {
     return (
         <>
-        <div className="col-12 col-md-5 d-flex justify-content-center align-items-center align-items-md-stretch price-card-container">
+        <div className="d-flex justify-content-center align-items-center price-card-container">
             <div className="pricing-card">
                 <img src={proBadge} alt="" className={props.setBadgeVisible}/>
                 <h5>{props.plan}</h5>

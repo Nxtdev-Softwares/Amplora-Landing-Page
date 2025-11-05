@@ -633,133 +633,139 @@ function Amplora() {
           id="pricing"
           className="d-flex justify-content-center align-items-center pricing-section flex-column container-fluid section-default-styles"
         >
-          <MainHeading heading="Scale Your Workflow Without Scaling Costs" />
+          <div style={{maxWidth: "700px"}}>
+            <MainHeading heading="Scale Your Content Workflow - Not Your Expenses" />
+          </div>
           <Subheadings subheading="Amplora’s all-in-one plan gives you unlimited posting power at a price that grows with your business." />
 
-          <div
-            className="row justify-content-center align-items-center pricing-cards-container"
-            style={{}}
-          >
-            <Col xs={11} lg={8}>
-              <Row className="flex-wrap justify-content-center align-items-center gap-1 gap-md-5 align-items-md-stretch">
-                <PricingCards
-                  plan="Starter Plan"
-                  setBadgeVisible="d-none"
-                  price="$180"
-                  tag="Best for solopreneurs or small creators."
-                  featuresHeading="Key Features"
-                  checkmarksColor="green"
-                  features={[
-                    "Post seamlessly across Instagram",
-                    "Smart scheduling (publish while you sleep)",
-                    "Basic Email Marketing (limited sends, no automation)",
-                  ]}
-                  btnText="Join Waitlist"
-                  btnClassName="standard-btn"
-                  buttonPath="/partners/products/amplora/waitinglist"
-                />
+          <div className="row container d-flex justify-content-center pricing-strcture-container">
+          <div className="col-12 col-md-6">
+              <PricingCards
+                plan="Starter Plan"
+                setBadgeVisible="d-none"
+                price="$180"
+                tag="Best for solopreneurs or small creators."
+                featuresHeading="Key Features"
+                checkmarksColor="green"
+                features={[
+                  "Post seamlessly across Instagram",
+                  "Smart scheduling (publish while you sleep)",
+                  "AI Caption & Hashtag Suggestions",
+                  "Viral Post Templates Library (Starter Access)",
+                  "AI Idea Generator – fresh post ideas daily",
+                  "Basic Growth Tracker – see what’s performing best",
+                  "1 connected account",
+                  "Access to Amplora community",
+                ]}
+                btnText="Join Waitlist"
+                btnClassName="standard-btn"
+                buttonPath="/partners/products/amplora/waitinglist"
+              />
+          </div>
 
-                {/* "AI-powered content tailored to your brand voice",
-                "" */}
+          <div className="col-12 col-md-6">
+              <PricingCards
+                plan="Standard Plan"
+                setBadgeVisible="d-none"
+                price="$300"
+                tag="Best for agencies and power users."
+                featuresHeading="Everything in starter, plus:"
+                checkmarksColor="green"
+                features={[
+                  "Post across Instagram, Threads & Facebook",
+                  "Advanced AI Content Assistant (hooks, captions, carousels)",
+                  "Deep Performance Analytics (reach, saves, shares & trends)",
+                  "Personal Brand Customization (colors, fonts, layouts)",
+                  "Automatic Repurposing – turn one post into 3 formats",
+                  "Viral Insights Dashboard – track content type performance",
+                  "Multi-account management (up to 3 accounts)",
+                  "Access to private creator growth sessions",
+                ]}
+                btnText="Join Waitlist"
+                btnClassName="standard-btn"
+                buttonPath="/partners/products/amplora/waitinglist"/>
+          </div>
 
-                <PricingCards
-                  plan="Standard Plan"
-                  setBadgeVisible="d-none"
-                  price="$300"
-                  tag="Best for agencies and power users."
-                  featuresHeading="Everything in starter, plus:"
-                  checkmarksColor="green"
-                  features={[
-                    "Post seamlessly across Instagram, Threads, Facebook",
-                    "Advanced analytics & insights",
-                    "Deeper customization & branding control",
-                    "Expanded emil marketing (higher sends, basic automation)",
-                  ]}
-                  btnText="Join Waitlist"
-                  btnClassName="standard-btn"
-                  buttonPath="/partners/products/amplora/waitinglist"
-                />
+          <div className="col-12 col-md-6 mt-5">
+              <PricingCards
+                plan="Pro Plan"
+                setBadgeVisible="d-flex"
+                price="$500"
+                tag="Built for growing brands & agencies"
+                featuresHeading="Everything in Standard, plus:"
+                checkmarksColor="blue"
+                features={[
+                  "Manage unlimited accounts in one dashboard",
+                  "Post across Instagram, Threads, TikTok, LinkedIn & Facebook",
+                  "AI Creative Studio – generate post ideas, designs, and captions in one flow",
+                  "Predictive Growth Analytics – forecast post performance",
+                  "Audience Insights AI – understand your followers & trends",
+                  "API Access for integrations",
+                  "Priority publishing servers for reliability",
+                ]}
+                btnText="Be a Founding User"
+                btnClassName="pro-btn"
+                buttonPath="/partners/products/amplora/waitinglist"/>
+          </div>
 
-                <PricingCards
-                  plan="Pro Plan"
-                  setBadgeVisible="d-flex"
-                  price="$500"
-                  tag="Built for growing brands & agencies"
-                  featuresHeading="Everything in Standard, plus:"
-                  checkmarksColor="blue"
-                  features={[
-                    "Manage unlimited accounts in one dashboard",
-                    "Post across 5 social media platforms (Instagram, TikTok, Threads, LinkedIn & Facebook)",
-                    "API Access",
-                    "Exclusive Founding Member badge",
-                    "Full email marketing suite (unlimited sends, advanced automation)",
-                  ]}
-                  btnText="Be a Founding User"
-                  btnClassName="pro-btn"
-                  buttonPath="/partners/products/amplora/waitinglist"
-                />
-
-                <div className="col-12 col-md-5 d-flex align-items-center price-card-container founding">
-                  <div className="pricing-card founding">
-                    <div className="top-content">
-                      <img src={limitedBadge} alt="" />
-                      <h5>Founding Deal</h5>
-                      <div className="prices">
-                        <h1>$150</h1>
-                        <h6>
-                          USD / per month{" "}
-                          <span style={{ color: "black", fontWeight: "700" }}>
-                            | Locked in for life{" "}
-                          </span>
-                        </h6>
-                      </div>
-                      <h4>Only 5 spots available</h4>
-                      <h3>pay upfront and join as a founding member.</h3>
-                      <div className="features-section mb-1">
-                        <div className={`features`}>
-                          <div className="feature d-flex gap-1">
-                            <Check className="check" />
-                            <h6>Early full access to Amplora</h6>
-                          </div>
-                          <div className="feature d-flex gap-1">
-                            <Check className="check" />
-                            <h6>AI-powered content creation</h6>
-                          </div>
-                          <div className="feature d-flex gap-1">
-                            <Check className="check" />
-                            <h6>Post on Instagram, TikTok, Threads & more</h6>
-                          </div>
-                          <div className="feature d-flex gap-1">
-                            <Check className="check" />
-                            <h6>Founding Member badge</h6>
-                          </div>
-                          <div className="feature d-flex gap-1">
-                            <Check className="check" />
-                            <h6>
-                              Lifetime access to all future features + priority
-                              updates
-                            </h6>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="pb-3">
-                        <h3>
-                          💡 Save $2,000+ vs hiring a social media manager.
-                        </h3>
-                        <h2 className="pb-5">
-                          🔒 This offer will never return.
-                        </h2>
-                        <a href="/partners/products/amplora/UpfrontPaymentPage">
-                        <button className="limited-btn">
-                          Claim Your Founding Spot
-                        </button>
-                        </a>
-                      </div>
+          <div className="col-12 col-md-6 mt-5">
+            <div className="pricing-card founding">
+              <div className="top-content">
+                <img src={limitedBadge} alt="" />
+                <h5>Founding Deal</h5>
+                <div className="prices">
+                  <h1>$150</h1>
+                  <h6>
+                    USD / per month{" "}
+                    <span style={{ color: "black", fontWeight: "700" }}>
+                      | Locked in for life{" "}
+                    </span>
+                  </h6>
+                </div>
+                <h4>Only 5 spots available</h4>
+                <h3>pay upfront and join as a founding member.</h3>
+                <div className="features-section mb-1">
+                  <div className={`features`}>
+                    <div className="feature d-flex gap-1">
+                      <Check className="check" />
+                      <h6>Get everything in the Pro plan</h6>
+                    </div>
+                    <div className="feature d-flex gap-1">
+                      <Check className="check" />
+                      <h6>Founding Member Badge (visible on your Amplora dashboard)</h6>
+                    </div>
+                    <div className="feature d-flex gap-1">
+                      <Check className="check" />
+                      <h6>Early feature access before public release</h6>
+                    </div>
+                    <div className="feature d-flex gap-1">
+                      <Check className="check" />
+                      <h6>Direct feedback access with Amplora’s core team</h6>
+                    </div>
+                    <div className="feature d-flex gap-1">
+                      <Check className="check" />
+                      <h6>
+                        Lifetime discount lock (your rate never increases)
+                      </h6>
                     </div>
                   </div>
                 </div>
-              </Row>
-            </Col>
+                <div className="pb-3">
+                  <h3>
+                    💡 Save $2,000+ vs hiring a social media manager.
+                  </h3>
+                  <h2 className="pb-4 pb-md-0">
+                    🔒 This offer will never return.
+                  </h2>
+                  <a href="/partners/products/amplora/UpfrontPaymentPage">
+                  <button className="limited-btn">
+                    Claim Your Founding Spot
+                  </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
 
