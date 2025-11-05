@@ -9,6 +9,11 @@ body {
     padding: 0px;
 }
 
+.no-scroll {
+  overflow-y: hidden;
+}
+
+
 .waitlist-form-page {
     background-color: var(--bg-color);
     width: 100%;
@@ -1106,5 +1111,279 @@ button {
         min-width: auto;
         padding: 7px 10px;
         font-size: 16px;
+    }
+}
+
+div#success-modal-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(12, 14, 19, 0.466);
+    z-index: 69999;
+    width: 100%;
+    height: 100%;
+    animation: overlayAnime 0.3s forwards ease-in-out;
+}
+@keyframes overlayAnime {
+    0% { opacity: 0;}
+    100% {opacity: 1;}
+}
+
+div#success-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(12, 14, 19);
+    z-index: 70000;
+    padding: 40px 30px;
+    padding-top: 100px;
+    width: 80%;
+    max-width:  600px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgb(30, 70, 247);
+    animation: successModal 0.3s forwards ease-in-out;
+}
+
+div#success-modal .close {
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 40px;
+    height: 40px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+div#success-modal .check-icon {
+    color: green;
+    position: absolute;
+    top: -80px;
+    width: 200px;
+    height: 200px;
+}
+
+div#success-modal .close:hover {
+    color: rgb(151, 151, 151);
+}
+
+div#success-modal .header h2 {
+    margin-top: 20px;
+    font-size: 30px;
+    font-family: Outfit, Inter;
+}
+
+div#success-modal .header h4 {
+    font-size: 20px;
+    font-weight: 400;
+    font-family: sans-serif;
+    color: rgb(184, 184, 184);
+}
+div#success-modal .line {
+    width: 100%;
+    height: 3px;
+    background-color: rgb(29, 28, 28);
+    margin: 10px 0px;
+}
+div#success-modal .share-sec h3 {
+    font-size: 26px;
+    font-family: Outfit, Inter;
+}
+
+div#success-modal .waitlist-page-link {
+    color: rgb(0, 183, 255);
+    font-size: 19px;
+    font-weight: 600;
+}
+div#success-modal .waitlist-page-link:hover {
+    text-decoration: none;
+}
+
+div#success-modal .share-sec h5 {
+    font-size: 20px;
+    font-weight: 400;
+    font-family: sans-serif;
+    color: rgb(184, 184, 184);
+}
+div#success-modal .btn-row {
+    display: flex;
+    gap: 20px;
+}
+div#success-modal .btn-row button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+    color: rgb(24, 24, 24);
+}
+div#success-modal .btn-row button:hover {
+    background-color: rgb(170, 197, 255);
+}
+
+div#success-modal .btn-row button .social.x {
+    color: rgb(32, 32, 32);
+    width: 26px;
+    height: 26px;
+    stroke-width: 3px;
+    transition: 0.3s;
+}
+div#success-modal .btn-row button:hover .social.x {
+    color: #000000;
+}
+div#success-modal .btn-row button .social.insta {
+    color: rgb(20, 189, 43);
+    width: 26px;
+    height: 26px;
+    stroke-width: 3px;
+    transition: 0.3s;
+}
+div#success-modal .btn-row button:hover .social.insta {
+    color: #1b9e22;
+}
+
+
+@media (max-width: 720px) {
+div#success-modal {
+    padding: 40px 30px;
+    padding-top: 80px;
+    width: 90%;
+}
+div#success-modal .check-icon {
+    top: -60px;
+    width: 150px;
+    height: 150px;
+}
+div#success-modal .close:hover {
+    color: rgb(151, 151, 151);
+}
+div#success-modal .header h2 {
+    margin-top: 20px;
+    font-size: 29px;
+}
+
+div#success-modal .header h4 {
+    font-size: 17px;
+}
+div#success-modal .line {
+    width: 100%;
+    height: 3px;
+    background-color: rgb(29, 28, 28);
+    margin: 10px 0px;
+}
+div#success-modal .share-sec h3 {
+    font-size: 29px;
+    font-family: Outfit;
+}
+div#success-modal .share-sec h5 {
+    font-size: 16px;
+}
+}
+
+@media (max-width: 600px) {
+div#success-modal {
+    padding: 40px 20px;
+    padding-top: 60px;
+    width: 90%;
+}
+div#success-modal .check-icon {
+    top: -60px;
+    width: 120px;
+    height: 120px;
+}
+div#success-modal .close:hover {
+    color: rgb(151, 151, 151);
+}
+div#success-modal .header h2 {
+    margin-top: 20px;
+    font-size: 22px;
+}
+div#success-modal .header h4 {
+    font-size: 16px;
+}
+div#success-modal .line {
+    width: 100%;
+    height: 3px;
+    background-color: rgb(29, 28, 28);
+    margin: 10px 0px;
+}
+div#success-modal .share-sec h3 {
+    font-size: 20px;
+    font-family: Outfit;
+}
+div#success-modal .share-sec h5 {
+    font-size: 16px;
+}
+div#success-modal .btn-row button {
+    gap: 1px;
+    padding: 8px 5px;
+    font-size: 14px;
+}
+div#success-modal .btn-row button .social.x {
+    width: 15px;
+    height: auto;
+}
+div#success-modal .btn-row button .social.insta {
+    width: 15px;
+    height: auto;
+}
+}
+
+@keyframes successModal {
+    0% {opacity: 0; transform: translateY(-30px) translateX(-50%);}
+    100% {opacity: 1; transform: translateY(-50%) translateX(-50%);}
+}
+
+ div#success-modal.fade-out{
+  transform: translateY(-10px);
+}
+
+div#error-message {
+    position: fixed;
+    display: flex;
+    bottom: 50px;
+    right: 50px;
+    z-index: 7000;
+    background-color: #ffe5e5;
+    color: #ff0202;
+    font-weight: bold;
+    border: 1px solid #f5c2c0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 17px;
+    margin: 10px 0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 670px) {
+    div#error-message {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
     }
 }

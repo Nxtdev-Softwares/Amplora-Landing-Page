@@ -8,7 +8,12 @@ import { NotebookPen } from 'lucide-react';
 import { AlarmClock } from 'lucide-react';
 import { Rocket } from 'lucide-react';
 import { ArrowUp } from 'lucide-react';
+import { X } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 import { MoveRight } from 'lucide-react';
+import { CircleCheck } from 'lucide-react';
+import { Twitter } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { CornerRightDown } from 'lucide-react';
 import { Zap } from 'lucide-react';
 import { CircleStar } from 'lucide-react';
@@ -20,6 +25,8 @@ import {Col, Row} from "react-bootstrap"
 import sideImageBadge from '../../../../../assets/sideImageBadge.png'
 import sideImageRocket from "../../../../../assets/sideImageRocket.png";
 import waitlistMockup from "../../../../../assets/waitlistDashboard.png";
+
+import successCheck from "../../../../../assets/success-check.png";
 
 import "./Amplora/styles/WaitListFormPage.css";
 import { useLocation, useParams } from 'react-router';
@@ -36,6 +43,7 @@ import { LoadPayhereScript } from '../../../../../api/PaymentGateways';
 
 import { Helmet } from "react-helmet";
 import { useSearchParams } from 'react-router-dom';
+import { h3 } from 'framer-motion/client';
 
 
 function WaitListForm() {
@@ -73,35 +81,54 @@ function WaitListForm() {
   const [role, setRole] = useState("");
   const roleRef = useRef(null);
 
+  const [errorMsg, setErrorMsg] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(true)
+  const [fadeOut, setFadeOut] = useState(false);
+
+  const shareLink = "https://www.bininstructions.com/partners/products/amplora/waitinglist";
+  const shareText =
+    "I just joined Amplora’s Early Access - a new creator growth platform! Join me here:";
+
+  // 🔗 Copy link to clipboard
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(shareLink);
+      alert("✅ Link copied to clipboard!");
+    } catch (err) {
+      console.error("Copy failed:", err);
+    }
+  };
+
+  // 🐦 Share on Twitter (X)
+  const handleTwitterShare = () => {
+    const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+      `${shareText} ${shareLink}`
+    )}`;
+    window.open(tweetUrl, "_blank");
+  };
+
+  // 💬 Share via WhatsApp
+  const handleWhatsAppShare = () => {
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(
+      `${shareText} ${shareLink}`
+    )}`;
+    window.open(whatsappUrl, "_blank");
+  };
 
   const addUserToWaitingList = async(payUpfront) => {
 
     const data = {
       name: document.getElementById("name").value,
-      whatsapp: document.getElementById("whatsapp").value,
       website: document.getElementById("website").value,
       email: document.getElementById("email").value,
-      brandName: document.getElementById("brandName").value,
       jobTitle: document.getElementById("jobTitle").value,
       agreed: document.getElementById("defaultCheck1").checked,
-      selectedPlan: document.getElementById("product-plan").value,
-      payUpfront: payUpfront
     };
     const response = await api.post("/api/v1/partners/products/amplora/waiting-list/adduser", data);
     if (response.status === 200){
       console.log(response.data);
       if (response.data.status == "ok"){
         if (response.data.launchPayment){
-          payhere.onCompleted = function onCompleted(orderId) {
-            console.log("Payment completed. OrderID:" + orderId);
-            // Note: validate the payment and show success or failure page to the customer
-          };
-
-          // Payment window closed
-          payhere.onDismissed = function onDismissed() {
-            // Note: Prompt user to pay again or show an error page
-            console.log("Payment dismissed");
-          };
 
           // Error occurred
           payhere.onError = function onError(error) {
@@ -114,11 +141,32 @@ function WaitListForm() {
 
           payhere.startPayment(paymentData);
         }
-        alert("Successfully added to the waiting list!");
+        setShowSuccess(true);
       }
     }
 
+    if (!name.trim() || !email.trim() || jobTitle.trim() || agreed.trim()) {
+      setErrorMsg(true);
+      return;
+    }
+
+    setErrorMsg(false);
+
   }
+
+    useEffect(() => {
+    if (errorMsg) {
+      const fadeTimer = setTimeout(() => setFadeOut(true), 2500); // start fade before removal
+      const hideTimer = setTimeout(() => {
+        setErrorMsg(false);
+        setFadeOut(false);
+      }, 3000);
+      return () => {
+        clearTimeout(fadeTimer);
+        clearTimeout(hideTimer);
+      };
+    }
+  }, [errorMsg]);
 
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [selectedPlanActive, setSelectedPlanActive] = useState(false);
@@ -431,6 +479,42 @@ function WaitListForm() {
       </div>
 
       <TheFooter />
+
+      {showSuccess && (
+        <>
+        <div id={`success-modal-overlay`} onClick={() => setShowSuccess(false)}></div>
+        <div id="success-modal" className="d-flex justify-content-center align-items-center flex-column">
+          <X className='close' onClick={() => setShowSuccess(false)}/>
+          <img src={successCheck} alt="" className='check-icon'/>
+          <div className="header">
+            <h2>You’re officially on the Amplora Early Access list 🎉</h2>
+            <h4>You’ve just taken the first step to build your creator audience smarter - not harder.</h4>
+            <h4>Keep an eye on your inbox for early-access updates, exclusive growth tips, and behind-the-scenes insights from Amplora.</h4>
+          </div>
+          <div className="line"></div>
+          <div className="share-sec">
+            <h3>Want to help your friends grow faster too?</h3>
+            <h5>Share this early-access link so your friends can join Amplora before the public launch:</h5>
+
+            <a href="https://www.bininstructions.com/partners/products/amplora/waitinglist" target='_blank' className='waitlist-page-link' rel="noopener noreferrer">
+              Amplora Waitlist Link
+            </a>
+          </div>
+          <div className="btn-row mt-3 mt-md-4">
+            <button onClick={handleCopy}>🔗 Copy Link</button>
+            <button onClick={handleTwitterShare}>Share <Twitter className='social x'/></button>
+            <button onClick={handleWhatsAppShare}>Share <FaWhatsapp  className='social insta'/></button>
+          </div>
+        </div>
+        </>
+      )}
+
+      {errorMsg && (
+        <div id="error-message">
+          ⚠️ Please fill in all required fields.
+        </div>
+      )}
+
     </>
   );
 }

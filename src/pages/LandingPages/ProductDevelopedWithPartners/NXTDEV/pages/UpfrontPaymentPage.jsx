@@ -65,24 +65,35 @@ function UpfrontPaymentPage() {
   const nameRef = useRef(null);
   const [email, setEmail] = useState("");
   const emailRef = useRef(null);
-  const [whatsapp, setWhatsapp] = useState("");
-  const whatsappRef = useRef(null);
-  const [brandName, setBrandName] = useState("");
-  const brandNameRef = useRef(null);
   const [socialMediaLink, setSocialMediaLink] = useState("");
   const socialMediaLinkRef = useRef(null);
   const [role, setRole] = useState("");
   const roleRef = useRef(null);
 
+  const [errorMsg, setErrorMsg] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
+  const [fadeOut, setFadeOut] = useState(false);
+
+  useEffect(() => {
+      if (errorMsg) {
+        const fadeTimer = setTimeout(() => setFadeOut(true), 2500); // start fade before removal
+        const hideTimer = setTimeout(() => {
+          setErrorMsg(false);
+          setFadeOut(false);
+        }, 3000);
+        return () => {
+          clearTimeout(fadeTimer);
+          clearTimeout(hideTimer);
+        };
+      }
+    }, [errorMsg]);
 
   const addUserToWaitingList = async(payUpfront) => {
 
     const data = {
       name: document.getElementById("name").value,
-      whatsapp: document.getElementById("whatsapp").value,
       website: document.getElementById("website").value,
       email: document.getElementById("email").value,
-      brandName: document.getElementById("brandName").value,
       jobTitle: document.getElementById("jobTitle").value,
       agreed: document.getElementById("defaultCheck1").checked,
       selectedPlan: document.getElementById("product-plan").value,
@@ -118,6 +129,12 @@ function UpfrontPaymentPage() {
         alert("Successfully added to the waiting list!");
       }
     }
+    if (!name.trim() || !email.trim() || jobTitle.trim() || agreed.trim() || selectedPlan.trim()) {
+      setErrorMsg(true);
+      return;
+    }
+
+    setErrorMsg(false);
 
   }
 
@@ -453,6 +470,12 @@ function UpfrontPaymentPage() {
       </div>
 
       <TheFooter />
+
+      {errorMsg && (
+        <div id="error-message">
+          ⚠️ Please fill in all required fields.
+        </div>
+      )}
     </>
   );
 }
