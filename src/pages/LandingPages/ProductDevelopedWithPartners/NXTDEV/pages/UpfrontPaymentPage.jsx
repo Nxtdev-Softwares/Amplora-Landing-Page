@@ -73,6 +73,7 @@ function UpfrontPaymentPage() {
   const [errorMsg, setErrorMsg] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [fadeOut, setFadeOut] = useState(false);
+  const [paymentFailed, setPaymentFailed] = useState(false);
 
   useEffect(() => {
       if (errorMsg) {
@@ -89,53 +90,60 @@ function UpfrontPaymentPage() {
     }, [errorMsg]);
 
   const addUserToWaitingList = async(payUpfront) => {
-
-    const data = {
-      name: document.getElementById("name").value,
-      website: document.getElementById("website").value,
-      email: document.getElementById("email").value,
-      jobTitle: document.getElementById("jobTitle").value,
-      agreed: document.getElementById("defaultCheck1").checked,
-      selectedPlan: document.getElementById("product-plan").value,
-      payUpfront: payUpfront
-    };
-    const response = await api.post("/api/v1/partners/products/amplora/waiting-list/adduser", data);
-    if (response.status === 200){
-      console.log(response.data);
-      if (response.data.status == "ok"){
-        if (response.data.launchPayment){
-          payhere.onCompleted = function onCompleted(orderId) {
-            console.log("Payment completed. OrderID:" + orderId);
-            // Note: validate the payment and show success or failure page to the customer
-          };
-
-          // Payment window closed
-          payhere.onDismissed = function onDismissed() {
-            // Note: Prompt user to pay again or show an error page
-            console.log("Payment dismissed");
-          };
-
-          // Error occurred
-          payhere.onError = function onError(error) {
-            // Note: show an error page
-            console.log("Error:" + error);
-          };
-
-          const paymentData = response.data.paymentData;
-          // alert(JSON.stringify(paymentData));
-
-          payhere.startPayment(paymentData);
-        }
-        alert("Successfully added to the waiting list!");
-      }
-    }
-    if (!name.trim() || !email.trim() || jobTitle.trim() || agreed.trim() || selectedPlan.trim()) {
+    
+    console.log(name, email, role, agreed, selectedPlan);
+    if ((!name || name.trim() == "") || (!email || email.trim() == "") || (!role || role.trim() == "") || !agreed || (!selectedPlan || selectedPlan.trim() == "")) {
       setErrorMsg(true);
       return;
+    }else{
+      const agreed = document.getElementById("defaultCheck1").checked;
+      const data = {
+        name: document.getElementById("name").value,
+        website: document.getElementById("website").value,
+        email: document.getElementById("email").value,
+        jobTitle: document.getElementById("jobTitle").value,
+        agreed: agreed,
+        selectedPlan: document.getElementById("product-plan").value,
+        payUpfront: payUpfront,
+      };
+
+      const response = await api.post(
+        "/api/v1/partners/products/amplora/waiting-list/adduser",
+        data
+      );
+      if (response.status === 200) {
+        console.log(response.data);
+        if (response.data.status == "ok") {
+          if (response.data.launchPayment) {
+            payhere.onCompleted = function onCompleted(orderId) {
+              console.log("Payment completed. OrderID:" + orderId);
+              setShowSuccess(true);
+              // Note: validate the payment and show success or failure page to the customer
+            };
+
+            // Payment window closed
+            payhere.onDismissed = function onDismissed() {
+              // Note: Prompt user to pay again or show an error page
+              console.log("Payment dismissed");
+            };
+
+            // Error occurred
+            payhere.onError = function onError(error) {
+              // Note: show an error page
+              console.log("Error:" + error);
+              setPaymentFailed(true);
+              const timeout = setTimeout(() => setPaymentFailed(false), 3000);
+            };
+
+            const paymentData = response.data.paymentData;
+            // alert(JSON.stringify(paymentData));
+            payhere.startPayment(paymentData);
+          }
+          // alert("Successfully added to the waiting list!");
+        }
+      }
     }
-
     setErrorMsg(false);
-
   }
 
   const [selectedPlan, setSelectedPlan] = useState(null);
@@ -159,8 +167,7 @@ function UpfrontPaymentPage() {
     <>
       <Helmet>
         <title>
-          Pay the upfront | Be a founder of Amplora | Bininstructions
-          | NXTDEV
+          Pay the upfront | Be a founder of Amplora | Bininstructions | NXTDEV
         </title>
         <meta
           name="description"
@@ -176,14 +183,15 @@ function UpfrontPaymentPage() {
         />
       </Helmet>
       <NavBar />
-      <LoadPayhereScript />
+      {/* <LoadPayhereScript /> */}
       <div id="main-sec" className="waitlist-form-page">
         <div className="d-flex justify-content-center align-items-center flex-column container-fluid form-hero">
           <div className="row hero-content d-flex justify-content-center align-items-center">
             <div className="col-12 col-lg-7">
               <h1>Unlock Full Access to Amplora - Today.</h1>
               <h2>
-                Get full access to Amplora for $150/month - 70% off for the first 5 founding creators.
+                Get full access to Amplora for $150/month - 70% off for the
+                first 5 founding creators.
               </h2>
               <div className="d-flex justify-content-center justify-content-lg-start gap-4">
                 <a href="#upfront-form-section">
@@ -195,7 +203,7 @@ function UpfrontPaymentPage() {
               </div>
             </div>
             <div className="d-flex col-12 col-lg-5">
-              <img src={waitlistMockup} alt="" className='mockup'/>
+              <img src={waitlistMockup} alt="" className="mockup" />
             </div>
           </div>
         </div>
@@ -208,7 +216,8 @@ function UpfrontPaymentPage() {
 
           <h1>Join as a Founding Member</h1>
           <h5 className="d-flex justify-content-center">
-            Get full access today and secure your founder-only pricing before it’s gone.
+            Get full access today and secure your founder-only pricing before
+            it’s gone.
           </h5>
 
           <ScrollReveal className="fade-in-anime">
@@ -261,48 +270,48 @@ function UpfrontPaymentPage() {
 
                 <div className="col-12 col-md-6">
                   <div className="p-0 mb-2">
-                  <Row
-                    className={`subscription-plan-row ${
-                      selectedPlan ? "active" : ""
-                    } justify-content-start px-3`}
-                  >
-                    {!selectedPlan && (
-                      <label className="w-auto pb-2 sale-float-label no-move">
-                        Subscription Plan
-                      </label>
-                    )}
-                    <select
-                      onSelect={(e) => {
-                        setSelectedPlan(e.target.value);
-                      }}
-                      id="product-plan"
-                      className="form-select text-white border-0"
-                      style={{
-                        backgroundColor: "var(--form-inputs-bg)",
-                      }}
+                    <Row
+                      className={`subscription-plan-row ${
+                        selectedPlan ? "active" : ""
+                      } justify-content-start px-3`}
                     >
-                      {plans.map((plan) => {
-                        return (
-                          <option
-                            className='pricing-plan-dropdown'
-                            value={plan.id}
-                            selected={
-                              searchParams
-                                ? searchParams.get("plan") == plan.planName
-                                : false
-                            }
-                          >
-                            {plan.planName}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </Row>   
+                      {!selectedPlan && (
+                        <label className="w-auto pb-2 sale-float-label no-move">
+                          Subscription Plan
+                        </label>
+                      )}
+                      <select
+                        onChange={(e) => {
+                          setSelectedPlan(e.target.value);
+                        }}
+                        id="product-plan"
+                        className="form-select text-white border-0"
+                        style={{
+                          backgroundColor: "var(--form-inputs-bg)",
+                        }}
+                      >
+                        {plans.map((plan) => {
+                          return (
+                            <option
+                              className="pricing-plan-dropdown"
+                              value={plan.id}
+                              selected={
+                                searchParams
+                                  ? searchParams.get("plan") == plan.planName
+                                  : false
+                              }
+                            >
+                              {plan.planName}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </Row>
                   </div>
                 </div>
-                
+
                 <div className="col-12 col-md-6">
-                <div
+                  <div
                     className={`website-row ${socialMediaLink ? "active" : ""}`}
                   >
                     <label className="optional-label">(Optional)</label>
@@ -320,7 +329,7 @@ function UpfrontPaymentPage() {
                     />
                   </div>
                 </div>
-              
+
                 <div className="col-12 col-md-6 d-flex align-items-center">
                   <span className="d-flex gap-0 checkbx-container align-items-center">
                     <input
@@ -328,7 +337,7 @@ function UpfrontPaymentPage() {
                       type="checkbox"
                       id="defaultCheck1"
                     />
-                    <p className='mb-2'>
+                    <p className="mb-2">
                       I agree Amplora’s{" "}
                       <a href="/partners/products/amplora/privacy-policy">
                         Founder Terms
@@ -336,28 +345,27 @@ function UpfrontPaymentPage() {
                     </p>
                   </span>
                 </div>
-                </div>
+              </div>
 
-                <div className="row mb-3 mt-md-1 mt-2">
-                      <button
-                      className="cta-btn"
-                      onClick={() => {
-                        addUserToWaitingList(false);
-                      }}
-                    >
-                      💥 Get Full Access Now
-                    </button>
-                    <p className="btn-supports bottom">
-                      Exclusive offer for the first 5 founders.
-                    </p>
-                </div>
-              
+              <div className="row mb-3 mt-md-1 mt-2">
+                <button
+                  className="cta-btn"
+                  onClick={() => {
+                    addUserToWaitingList(true);
+                  }}
+                >
+                  💥 Get Full Access Now
+                </button>
+                <p className="btn-supports bottom">
+                  Exclusive offer for the first 5 founders.
+                </p>
+              </div>
+
               <p className="bottom-text">
                 Your info is 100% secure • No spam • Cancel anytime
               </p>
             </div>
           </ScrollReveal>
-
         </div>
 
         <div
@@ -366,9 +374,14 @@ function UpfrontPaymentPage() {
         >
           {/* <img src={sideImageRocket} alt="" className='d-none d-xxl-flex side-images left'/> */}
           <MainHeading heading="Get the Full System - at 70% Off." />
-          <div className='d-flex justify-content-center align-items-center' style={{maxWidth: "1190px"}}>
-            <h6 className="default-sub-heading">              
-              This is your chance to get in before the masses. Amplora is for serious creators who want real data, repeatable growth, and an unfair advantage - early.
+          <div
+            className="d-flex justify-content-center align-items-center"
+            style={{ maxWidth: "1190px" }}
+          >
+            <h6 className="default-sub-heading">
+              This is your chance to get in before the masses. Amplora is for
+              serious creators who want real data, repeatable growth, and an
+              unfair advantage - early.
             </h6>
           </div>
 
@@ -383,9 +396,7 @@ function UpfrontPaymentPage() {
                     <BadgeDollarSign className="icon" />
                   </div>
                   <h2>Founder-Only Price</h2>
-                  <h6>
-                    Lock in Amplora for $150/month - 70% off.
-                  </h6>
+                  <h6>Lock in Amplora for $150/month - 70% off.</h6>
                 </div>
               </div>
               <div
@@ -397,9 +408,7 @@ function UpfrontPaymentPage() {
                     <Rocket className="icon" />
                   </div>
                   <h2>Claim Full Access</h2>
-                  <h6>
-                    Unlock every feature before public launch.
-                  </h6>
+                  <h6>Unlock every feature before public launch.</h6>
                 </div>
               </div>
               <div className="col-12 col-md-3 col-lg-4 p-0">
@@ -408,9 +417,7 @@ function UpfrontPaymentPage() {
                     <CircleStar className="icon" />
                   </div>
                   <h2>Founder Badge & Priority</h2>
-                  <h6>
-                    Get lifetime recognition and early updates.
-                  </h6>
+                  <h6>Get lifetime recognition and early updates.</h6>
                 </div>
               </div>
             </EachScrollReveal>
@@ -425,14 +432,13 @@ function UpfrontPaymentPage() {
           <div className="row d-flex justify-content-center align-items-start content">
             <div className="col-12 col-md-6 col-lg-6 pe-0 pe-md-5 ps-0">
               <Row>
-                <h1>
-                  Don’t Wait for Launch. Be the Launch.
-                </h1>
+                <h1>Don’t Wait for Launch. Be the Launch.</h1>
               </Row>
               <Row>
-              <h2>
-                Secure your founder-tier access today and start mastering your growth system - for 70% off.
-              </h2>
+                <h2>
+                  Secure your founder-tier access today and start mastering your
+                  growth system - for 70% off.
+                </h2>
               </Row>
               <div className="d-flex btn-container justify-content-start flex-column">
                 <a href="#upfront-form-section">
@@ -461,7 +467,7 @@ function UpfrontPaymentPage() {
                 <h4>Lifetime recognition as a founding member</h4>
               </div>
 
-              <a href="/partners/products/amplora/privacy-policy" id='policy'>
+              <a href="/partners/products/amplora/privacy-policy" id="policy">
                 <p>View founderterms</p>
               </a>
             </div>
@@ -472,9 +478,11 @@ function UpfrontPaymentPage() {
       <TheFooter />
 
       {errorMsg && (
-        <div id="error-message">
-          ⚠️ Please fill in all required fields.
-        </div>
+        <div id="error-message">⚠️ Please fill in all required fields.</div>
+      )}
+
+      {paymentFailed && (
+        <div className="error-message">⚠️ Payment failed. Contact us to proceed.</div>
       )}
     </>
   );

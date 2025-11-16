@@ -1370,6 +1370,28 @@ div#error-message {
     animation: fadeIn 0.3s ease;
 }
 
+div.error-message {
+    position: fixed;
+    display: flex;
+    bottom: 50px;
+    right: 50px;
+    z-index: 7000;
+    background-color: #ffe5e5;
+    color: #ff0202;
+    font-weight: bold;
+    border: 1px solid #f5c2c0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 17px;
+    margin: 10px 0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    animation: fadeIn 0.3s ease;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -1382,6 +1404,12 @@ div#error-message {
 
 @media (max-width: 670px) {
     div#error-message {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+    }
+
+    div.error-message {
         left: 50%;
         transform: translateX(-50%);
         width: 90%;
