@@ -162,7 +162,7 @@ function Amplora() {
     {
         question: "Does Amplora create content for me?",
         answer:
-        "Yes! Powered by ChatGPT, Amplora writes posts and captions for you. Just set your preferences once. The AI thinks, creates, and posts.",
+        "Yes. Amplora uses AI to write posts and captions in your brand voice. Set your preferences once - the AI thinks, creates, and posts for you.",
     },
     {
         question: "Can I customize the AI to my workflow?",
@@ -172,7 +172,7 @@ function Amplora() {
     {
         question: "Does the AI post automatically, or do I approve first?",
         answer:
-        "You choose. Let AI auto-post on your behalf, or set Amplora to wait for your approval before publishing.",
+        "You choose. Let AI auto-post on your behalf, Let Amplora auto-post for you, or set it to wait for approval before publishing.",
     },
     {
         question: "Who is Amplora best suited for?",
@@ -270,7 +270,7 @@ function Amplora() {
               <div className="col-12 col-xl-7">
                 <h1 className="d-none d-md-flex fw-bold">{displayedText}</h1>
                 <h5 className="d-none d-md-flex">
-                  Amplora creates and posts content that attracts followers, grows reach, and converts them into clients - automatically.
+                  Amplora shows you what actually works, creates your content, and posts it automatically - so you can grow without burnout.
                 </h5>
 
                 <h1 className="d-flex d-md-none">{mobileDisplayedText}</h1>
@@ -868,7 +868,7 @@ function Amplora() {
           <Subheadings subheading="Whether it’s pricing, integrations, or feedback, reach out and we’ll reply within 24 hours." />
 
           <div className="row d-flex justify-content-center align-items-start contact-content">
-            <div className="col-12 col-md-6">
+            <div className="col-12 col-md-6" style={{zIndex: "7"}}>
               <ScrollReveal className="move-down-anime">
                 <div className="form-container" ref={contactFormRef}>
                   <h3>Send Us a Message</h3>
@@ -983,7 +983,7 @@ function Amplora() {
                 </div>
               </ScrollReveal>
             </div>
-            <div className="col-12 col-md-6">
+            <div className="col-12 col-md-6" style={{zIndex: "2"}}>
               <ScrollReveal className="move-down-anime">
                 <div className="quick-contacts-container">
                   <div>
