@@ -82,7 +82,7 @@ function WaitListForm() {
   const roleRef = useRef(null);
 
   const [errorMsg, setErrorMsg] = useState(false)
-  const [showSuccess, setShowSuccess] = useState(true)
+  const [showSuccess, setShowSuccess] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
 
   const shareLink = "https://www.bininstructions.com/partners/products/amplora/waitinglist";
@@ -116,38 +116,40 @@ function WaitListForm() {
   };
 
   const addUserToWaitingList = async(payUpfront) => {
-
-    const data = {
-      name: document.getElementById("name").value,
-      website: document.getElementById("website").value,
-      email: document.getElementById("email").value,
-      jobTitle: document.getElementById("jobTitle").value,
-      agreed: document.getElementById("defaultCheck1").checked,
-    };
-    const response = await api.post("/api/v1/partners/products/amplora/waiting-list/adduser", data);
-    if (response.status === 200){
-      console.log(response.data);
-      if (response.data.status == "ok"){
-        if (response.data.launchPayment){
-
-          // Error occurred
-          payhere.onError = function onError(error) {
-            // Note: show an error page
-            console.log("Error:" + error);
-          };
-
-          const paymentData = response.data.paymentData;
-          // alert(JSON.stringify(paymentData));
-
-          payhere.startPayment(paymentData);
-        }
-        setShowSuccess(true);
-      }
-    }
-
-    if (!name.trim() || !email.trim() || jobTitle.trim() || agreed.trim()) {
+    if ((!name || name.trim() == "") || (!email || email.trim() == "") || (!role || role.trim() == "") || !agreed) {
       setErrorMsg(true);
       return;
+    }else{
+      const data = {
+        name: document.getElementById("name").value,
+        website: document.getElementById("website").value,
+        email: document.getElementById("email").value,
+        jobTitle: document.getElementById("jobTitle").value,
+        agreed: document.getElementById("defaultCheck1").checked,
+        payUpfront: payUpfront,
+      };
+      const response = await api.post(
+        "/api/v1/partners/products/amplora/waiting-list/adduser",
+        data
+      );
+      if (response.status === 200) {
+        console.log(response.data);
+        if (response.data.status == "ok") {
+          if (response.data.launchPayment) {
+            // Error occurred
+            payhere.onError = function onError(error) {
+              // Note: show an error page
+              console.log("Error:" + error);
+            };
+
+            const paymentData = response.data.paymentData;
+            // alert(JSON.stringify(paymentData));
+
+            payhere.startPayment(paymentData);
+          }
+          setShowSuccess(true);
+        }
+      }
     }
 
     setErrorMsg(false);
