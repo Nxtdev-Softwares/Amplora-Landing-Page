@@ -418,8 +418,8 @@ function WaitListForm() {
               <span className="special">new features</span>, and earn an 
               <span className="special"> exclusive badge.</span>
             </p>
-            <a href="#form-section" className='d-flex mb-2' style={{textDecoration: "none", width: "100px"}}>
-              <button className="default-btn">Join Early Access</button>
+            <a href="/partners/products/amplora/UpfrontPaymentPage" className='d-flex mb-2' style={{textDecoration: "none", width: "100px"}}>
+              <button className="default-btn">Get Full Access</button>
             </a>
           </div>
           {/* <div className='scary-note flex-column'>

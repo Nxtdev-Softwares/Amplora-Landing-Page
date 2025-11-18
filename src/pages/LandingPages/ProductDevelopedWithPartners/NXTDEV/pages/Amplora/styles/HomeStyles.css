@@ -1260,7 +1260,7 @@ body {
     margin: 0px;
     font-weight: 800;
     font-size: 19px;
-    color: black;
+    color: rgb(26, 26, 26);
 }
 .pricing-card.founding h3 {
     font-weight: 500;
@@ -1273,7 +1273,8 @@ body {
     font-weight: 500;
 }
 .pricing-card.founding h2 {
-    color: black; font-weight: bold;
+    margin-top: 20px;
+    color: rgb(65, 35, 22); font-weight: bold;
     font-size: 16px;
     text-align: center;
 }
@@ -1372,6 +1373,9 @@ body {
         min-width: 97%;
         min-height: auto;
         padding-bottom: 30px;
+    }
+    .pricing-card.founding h2 {
+        margin-top: 0px;
     }
     .pricing-strcture-container {
         margin-top: 0px;
