@@ -623,7 +623,7 @@ button {
     font-family: Inter, sans-serif;
     font-size: 20px;
     color: rgb(26, 26, 26);
-    min-width: 200px;
+    min-width: 260px;
     border-radius: 20px;
     transition: 0.3s;
 }

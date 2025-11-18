@@ -419,7 +419,7 @@ function WaitListForm() {
               <span className="special"> exclusive badge.</span>
             </p>
             <a href="/partners/products/amplora/UpfrontPaymentPage" className='d-flex mb-2' style={{textDecoration: "none", width: "100px"}}>
-              <button className="default-btn">Get Full Access</button>
+              <button className="default-btn">Claim Founders Access</button>
             </a>
           </div>
           {/* <div className='scary-note flex-column'>
@@ -491,7 +491,7 @@ function WaitListForm() {
           <div className="header">
             <h2>You’re officially on the Amplora Early Access list 🎉</h2>
             <h4>You’ve just taken the first step to build your creator audience smarter - not harder.</h4>
-            <h4>Keep an eye on your inbox for early-access updates, exclusive growth tips, and behind-the-scenes insights from Amplora.</h4>
+            <h4>Keep an eye on your inbox - you’ll receive early-access updates and creator growth tips directly from Amplora Team (info@bininstructions.com).</h4>
           </div>
           <div className="line"></div>
           <div className="share-sec">
