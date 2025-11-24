@@ -1148,6 +1148,10 @@ div#success-modal {
     animation: successModal 0.3s forwards ease-in-out;
 }
 
+div#success-modal .bolded {
+    color: white;
+}
+
 div#success-modal .close {
     position: absolute;
     top: 20px; right: 20px;

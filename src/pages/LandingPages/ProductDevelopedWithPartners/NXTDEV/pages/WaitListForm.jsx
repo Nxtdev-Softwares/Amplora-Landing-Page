@@ -489,10 +489,12 @@ function WaitListForm() {
           <X className='close' onClick={() => setShowSuccess(false)}/>
           <img src={successCheck} alt="" className='check-icon'/>
           <div className="header">
-            <h2>You’re officially on the Amplora Early Access list 🎉</h2>
-            <h4>You’ve just taken the first step to build your creator audience smarter - not harder.</h4>
-            <h4>Keep an eye on your inbox - you’ll receive early-access updates and creator growth tips directly from Amplora Team (info@bininstructions.com).</h4>
+            <h2>You’re on the Amplora Early Access list 🎉</h2>
+            <h4>Check your inbox for our welcome email from the <span className='bolded'>Amplora Team.</span></h4>
+            <h4>If it’s in Promotions/Spam, drag it to <span className='bolded'>Primary. </span> </h4>
+            <h4>You’ll now get early-access updates & creator growth tips.</h4>
           </div>
+
           <div className="line"></div>
           <div className="share-sec">
             <h3>Want to help your friends grow faster too?</h3>
