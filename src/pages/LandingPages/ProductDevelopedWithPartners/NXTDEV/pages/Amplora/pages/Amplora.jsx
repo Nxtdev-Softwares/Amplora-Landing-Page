@@ -25,10 +25,10 @@ import '../styles/NavBar.css'
 // Importing images
 import heroProfileMockup from "../../../../../../../assets/heroProfileMockup.svg";
 
-import uploadingAnime from "../../../../../../../assets/uploadingAnime.json"
-import drawing from "../../../../../../../assets/drawingAnime.json"
-import postingAnime from "../../../../../../../assets/postingAnime.json"
-import trackEngagement from "../../../../../../../assets/trackEngagement.json"
+import contentPlanning from "../../../../../../../assets/contentplanning.json"
+import drawing from "../../../../../../../assets/knowwhatworks.json"
+import rocketPostAnime from "../../../../../../../assets/confidenceposting.json"
+import trackEngagement from "../../../../../../../assets/growWithoutBurntout.json"
 import withGraph from "../../../../../../../assets/withGraph.svg"
 import withoutGraph from "../../../../../../../assets/withoutGraph.svg"
 import limitedBadge from "../../../../../../../assets/limited-pricing-badge.png"
@@ -37,7 +37,7 @@ import { X } from 'lucide-react';
 import xMark from "../../../../../../../assets/xMark.json"
 import tickMark from "../../../../../../../assets/tickMark.json"
 import { Check, Equal, Plus } from 'lucide-react';
-import { FaRobot, FaClock, FaBolt, FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaYoutube, FaPinterest, FaTiktok } from "react-icons/fa";
+import { FaRobot, FaChartBar, FaEnvelope, FaClock, FaBolt, FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaYoutube, FaPinterest, FaTiktok } from "react-icons/fa";
 import ctaVisual from "../../../../../../../assets/ctaVisualAnime.json"
 import instagramAnime from "../../../../../../../assets/instagram.json"
 import facebookAnime from "../../../../../../../assets/facebook.json"
@@ -59,14 +59,14 @@ function Amplora() {
     const heroMainText = (
       <>
       <span>
-        Build the audience that builds your <span style={{color: "#00FFFF"}}>business.</span>
+        Build content that actually grows your <span style={{color: "#00FFFF"}}>audience.</span>
       </span>
       </>
     );
     const [displayedText, setDisplayedText] = useState(
       <>
       <span>
-        Build the audience that builds your <span style={{color: "#00FFFF"}}>business.</span>
+        Build content that actually grows your <span style={{color: "#00FFFF"}}>audience.</span>
       </span>
       </>);
     useEffect(() => {
@@ -83,7 +83,8 @@ function Amplora() {
         type();
     }, []);
 
-    const mobileHeroMainText = "Build the audience that builds your business.";
+    const mobileHeroMainText = "Build content that grows your audience";
+    const highlightAudience = mobileHeroMainText.split("audience");
     const [mobileDisplayedText, setMobileDisplayedText] = useState("");
     useEffect(() => {
         let index = 0;
@@ -135,49 +136,24 @@ function Amplora() {
     // for the faq's
     const faqData = [
     {
-        question: "Can I cancel my subscription anytime?",
+        question: "What platforms does Amplora support?",
         answer:
-        "Yes. Amplora is 100% subscription-based no contracts, no hidden fees. Cancel anytime with one click.",
+        "Amplora V1 gives insights across the platforms you use to help you plan content that actually performs.",
     },
     {
-        question: "Do you offer a free trial?",
+        question: "What exactly is included in early access?",
         answer:
-        "Not yet. Instead, we’re giving the full access to every feature for lifetime to the first 5 people who pay upfront. Lock in the lowest price forever.",
+        "Early access gives you full use of Amplora V1: weekly content insights, analytics for each post, growth suggestions, and access to the content vault.",
     },
     {
-        question: "What features are included in each plan?",
+        question: "Will future features cost extra?",
         answer:
-        "Features depend on your plan, but everyone on the waitlist gets early access to all upcoming features before public release.",
+        "We’re prioritizing early access feedback. Founder users will always get the best value when new features like automation are added.",
     },
     {
-        question: "Which social media platforms does Amplora support?",
+        question: "Who is Amplora for?",
         answer:
-        "Right now, Amplora posts to Instagram, TikTok, Threads, LinkedIn, and Facebook - all from one dashboard.",
-    },
-    {
-        question: "Can I schedule or repeat posts automatically?",
-        answer:
-        "Yes. You can schedule posts by date or set them to auto-repeat on a schedule. Amplora handles the rest.",
-    },
-    {
-        question: "Does Amplora create content for me?",
-        answer:
-        "Yes. Amplora uses AI to write posts and captions in your brand voice. Set your preferences once - the AI thinks, creates, and posts for you.",
-    },
-    {
-        question: "Can I customize the AI to my workflow?",
-        answer:
-        "Absolutely. You can adjust tone, style, and rules so content matches your brand voice every time.",
-    },
-    {
-        question: "Does the AI post automatically, or do I approve first?",
-        answer:
-        "You choose. Let AI auto-post on your behalf, Let Amplora auto-post for you, or set it to wait for approval before publishing.",
-    },
-    {
-        question: "Who is Amplora best suited for?",
-        answer:
-        "Amplora is designed for creators, small businesses, coaches, and agencies. If you want to save hours and grow your social media presence, it’s built for you.",
+        "Creators, coaches, and small businesses who want smarter posting, better insights, and faster audience growth without guesswork.",
     },
     {
         question: "How do I get the lifetime discount?",
@@ -270,10 +246,14 @@ function Amplora() {
               <div className="col-12 col-xl-7">
                 <h1 className="d-none d-md-flex fw-bold">{displayedText}</h1>
                 <h5 className="d-none d-md-flex">
-                  Amplora shows you what actually works, creates your content, and posts it automatically - so you can grow without burnout.
+                  Amplora shows you what’s working for creators like you - so you can post smarter, not harder.
                 </h5>
 
-                <h1 className="d-flex d-md-none">{mobileDisplayedText}</h1>
+                <h1 className="d-block d-md-none">
+                  {highlightAudience[0]}
+                  <span style={{ color: "#00FFFF" }}>audience.</span>
+                  {highlightAudience[1]}
+                </h1>
                 <h5 className="d-flex d-md-none">
                   Amplora saves hours by creating and posting your content
                   automatically.
@@ -310,7 +290,7 @@ function Amplora() {
                     ease: "easeInOut",
                   }}
                 >
-                  <FaRobot /> AI Creates Posts
+                  <FaRobot /> Proven Ideas
                 </motion.div>
 
                 <motion.div
@@ -322,7 +302,7 @@ function Amplora() {
                     ease: "easeInOut",
                   }}
                 >
-                  <FaClock /> Auto-Scheduling
+                  <FaChartBar /> Fast Insights
                 </motion.div>
 
                 <motion.div
@@ -334,7 +314,7 @@ function Amplora() {
                     ease: "easeInOut",
                   }}
                 >
-                  <FaBolt /> 1-Click Posting
+                  <FaBolt /> Smart Planning
                 </motion.div>
 
                 <div className="social-icons d-none d-md-flex">
@@ -385,23 +365,23 @@ function Amplora() {
               >
                 <BenefitCard
                   icon={drawing}
-                  task="Smart Content Creation"
-                  description="AI crafts scroll-stopping posts tailored to your brand voice."
+                  task="Know What Works"
+                  description="Amplora shows which posts actually get results by analyzing top creators and trends."
                 />
                 <BenefitCard
-                  icon={uploadingAnime}
-                  task="Post Everywhere in One Click"
-                  description="Publish across every platform automatically, no copy-paste."
+                  icon={contentPlanning}
+                  task="Plan Smarter Content"
+                  description="Focus on content ideas that resonate with your audience, no guesswork needed."
                 />
                 <BenefitCard
-                  icon={postingAnime}
-                  task="Schedule & Forget"
-                  description="Plan once. Amplora handles posting while you focus on growing."
+                  icon={rocketPostAnime}
+                  task="Post with Confidence"
+                  description="Use insights to plan your content calendar and make every post count."
                 />
                 <BenefitCard
                   icon={trackEngagement}
-                  task="Insights That Matter"
-                  description="Track engagement, learn what works, and grow smarter."
+                  task="Grow Without Burnout"
+                  description="Save hours on trial-and-error posting and grow smarter with Amplora."
                 />
               </div>
             </ScrollReveal>
@@ -411,7 +391,7 @@ function Amplora() {
         <div className="d-flex justify-content-start align-items-center early-section flex-column container-fluid section-default-styles">
           <MainHeading heading="Why Join Amplora Early?" />
           <span className="d-none d-md-flex justify-content-center">
-            <Subheadings subheading="The first 5 upfront members get full access to every feature for only $150/month forever with early feature access, and a Founding Member badge. Plus, your feedback helps shape Amplora’s future." />
+            <Subheadings subheading="First 5 upfront members lock in all features for $150/month forever - plus early access and a Founding Member badge." />
           </span>
           <span className="d-flex d-md-none justify-content-center">
             <Subheadings subheading="First 5 upfront get full features for $150/mo for life + Founder Badge. Free waitlist members also get early feature access." />
@@ -512,9 +492,7 @@ function Amplora() {
                 <h4 className="axis-texts vertical">RESULTS</h4>
               </div>
               <p>
-                You put in hours every week posting manually. But because timing
-                is off, platforms are scattered, and consistency is hard to
-                maintain, the results never match the effort.
+                Amplora shows what works and gives clear insights - every post, every idea, every trend. Spend less time guessing, more time growing.
               </p>
             </div>
             <div className="col-12 col-md-5 col-lg-5 with-content">
@@ -535,9 +513,7 @@ function Amplora() {
                 <h4 className="axis-texts vertical">RESULTS</h4>
               </div>
               <p>
-                Amplora creates, schedules, and posts for you - every platform,
-                every time. Consistency is handled, freeing you to focus on
-                sales and strategy. The less you do, the more you grow.
+                You spend hours posting, testing, and hoping for engagement. Results rarely match effort, leaving you exhausted and stuck.
               </p>
             </div>
 
@@ -590,10 +566,7 @@ function Amplora() {
                     <h4 className="axis-texts vertical">RESULTS</h4>
                   </div>
                   <p>
-                    Amplora creates, schedules, and posts for you - every
-                    platform, every time. Consistency is handled, freeing you to
-                    focus on sales and strategy. The less you do, the more you
-                    grow.
+                    Amplora shows what works and gives clear insights - every post, every idea, every trend. Spend less time guessing, more time growing.
                   </p>
                 </div>
               )}
@@ -619,9 +592,7 @@ function Amplora() {
                     <h4 className="axis-texts vertical">RESULTS</h4>
                   </div>
                   <p>
-                    You put in hours every week posting manually. But because
-                    timing is off, platforms are scattered, and consistency is
-                    hard to maintain, the results never match the effort.
+                    You spend hours posting, testing, and hoping for engagement. Results rarely match effort, leaving you exhausted and stuck.
                   </p>
                 </div>
               )}
@@ -634,12 +605,12 @@ function Amplora() {
           className="d-flex justify-content-center align-items-center pricing-section flex-column container-fluid section-default-styles"
         >
           <div style={{maxWidth: "700px"}}>
-            <MainHeading heading="Scale Your Content Workflow - Not Your Expenses" />
+            <MainHeading heading="Transparent pricing for early access - no surprises" />
           </div>
-          <Subheadings subheading="Amplora’s all-in-one plan gives you unlimited posting power at a price that grows with your business." />
+          <Subheadings subheading="Amplora V1 gives you smarter insights, clearer direction, and a growth system built to scale with your audience." />
 
           <div className="row container d-flex justify-content-center pricing-strcture-container">
-          <div className="col-12 col-md-6">
+          {/* <div className="col-12 col-md-6">
               <PricingCards
                 plan="Starter Plan"
                 setBadgeVisible="d-none"
@@ -684,26 +655,21 @@ function Amplora() {
                 btnText="Join Waitlist"
                 btnClassName="standard-btn"
                 buttonPath="/partners/products/amplora/waitinglist"/>
-          </div>
+          </div> */}
 
           <div className="col-12 col-md-6 mt-5">
               <PricingCards
-                plan="Pro Plan"
-                setBadgeVisible="d-flex"
-                price="$500"
-                tag="Built for growing brands & agencies"
-                featuresHeading="Everything in Standard, plus:"
-                checkmarksColor="blue"
+                plan="Standard Plan"
+                setBadgeVisible="d-none"
+                price="$200"
+                checkmarksColor="green"
                 features={[
-                  "Manage unlimited accounts in one dashboard",
-                  "Post across Instagram, Threads, TikTok, LinkedIn & Facebook",
-                  "AI Creative Studio – generate post ideas, designs, and captions in one flow",
-                  "Predictive Growth Analytics – forecast post performance",
-                  "Audience Insights AI – understand your followers & trends",
-                  "API Access for integrations",
-                  "Priority publishing servers for reliability",
+                  "See what’s working, what’s not, and next steps for the week",
+                  "Smart analytics for each post",
+                  "Personalized “what to do next” guidance",
+                  "Full content vault access",
                 ]}
-                btnText="Be a Founding User"
+                btnText="Join Early Access"
                 btnClassName="pro-btn"
                 buttonPath="/partners/products/amplora/waitinglist"/>
           </div>
@@ -718,7 +684,7 @@ function Amplora() {
                   <h6>
                     USD / per month{" "}
                     <span style={{ color: "black", fontWeight: "700" }}>
-                      | Locked in for life{" "}
+                      | forever{" "}
                     </span>
                   </h6>
                 </div>
@@ -751,15 +717,12 @@ function Amplora() {
                   </div>
                 </div>
                 <div className="pb-3">
-                  <h3>
-                    💡 Save $2,000+ vs hiring a social media manager.
-                  </h3>
-                  <h2 className="pb-4 pb-md-0">
+                  <h2 className="mb-5 pb-md-0">
                     🔒 This offer will never return.
                   </h2>
                   <a href="/partners/products/amplora/UpfrontPaymentPage">
                   <button className="limited-btn">
-                    Claim Your Founding Spot
+                    Claim Founder Deal
                   </button>
                   </a>
                 </div>
@@ -801,6 +764,23 @@ function Amplora() {
               ))}
             </EachScrollReveal>
           </div>
+              <div className="faq-sec-cta-wrapper">
+                <div className="faq-sec-cta-container">
+                  <FaEnvelope className="faq-sec-cta-contact-icon" />
+
+                  <h3 className="faq-sec-cta-contact-title">
+                    Still have questions?
+                  </h3>
+
+                  <p className="faq-sec-cta-contact-sub">
+                    If you’ve got anything you want to clarify, we’re here to help.
+                  </p>
+
+                  <a href="/partners/products/amplora/#contact" className="faq-sec-cta-contact-btn">
+                    Contact Us
+                  </a>
+                </div>
+              </div>
         </div>
 
         <div className="d-flex justify-content-center align-items-center cta-section flex-column container-fluid section-default-styles">

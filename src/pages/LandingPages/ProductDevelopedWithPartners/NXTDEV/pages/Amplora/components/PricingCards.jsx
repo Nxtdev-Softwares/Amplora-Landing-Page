@@ -7,7 +7,13 @@ function PricingCards(props) {
         <div className="d-flex justify-content-center align-items-center price-card-container">
             <div className="pricing-card">
                 <img src={proBadge} alt="" className={props.setBadgeVisible}/>
-                <h5>{props.plan}</h5>
+                {/* Below text is only visible for the current Amplora V1 */}
+                <div className="d-flex align-items-end mb-4">
+                    <h2 className='Amplora-v1-text'>Amplora V1 |</h2>
+                    <h2 className='tempor-plan-text ms-2'>{props.plan}</h2>
+                </div>  
+                {/* ^^^^^ */}
+                {/* <h5>{props.plan}</h5> */}
                 <div className="prices">
                     <h1>{props.price}</h1>
                     <h6>USD / per month</h6>
@@ -18,7 +24,7 @@ function PricingCards(props) {
                     <div className={`features ${props.checkmarksColor}`}>
                         {props.features.map(feature => {
                             return (
-                              <div className="feature d-flex gap-1">
+                              <div className="feature d-flex gap-2">
                                 <Check className="check" />
                                 <h6>{feature}</h6>
                               </div>

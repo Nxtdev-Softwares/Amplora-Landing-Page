@@ -265,7 +265,7 @@ body {
     }
     .main-header-section h1 {
         margin-top: -70px;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 }
 @media (max-width: 1200px) {
@@ -820,6 +820,7 @@ body {
     position: relative;
     padding-left: 35px;
     border-radius: 9px;
+    min-height: 520px;
 }
 
 .comparison-section .with-without-container .main-icon{
@@ -915,9 +916,11 @@ body {
 .comparison-section .with-without-container p {
     color: var(--light-paragraph-color);
     font-size: 18px;
+    border-top: 2px solid var(--secondary-bg-color);
+    padding-top: 20px;
     font-weight: 400;
     font-family: Inter, sans-serif;
-    margin-top: 50px;
+    margin-top: 60px;
 }
 
 .comparison-section .with-tabs {
@@ -1006,6 +1009,7 @@ body {
 }
 @media (max-width: 990px) {
     .comparison-section .with-content, .without-content {
+        min-height: auto;
         padding-left: 15px;
     }
     .comparison-section .with-without-container .function {
@@ -1111,7 +1115,7 @@ body {
     transform: translateY(0);
 }
 .pricing-card:hover {
-    transform: scale(1.02);
+    transform: scale(1.02) translateY(-10px);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.527);
     transition: all 0.3s ease;
 }
@@ -1124,6 +1128,16 @@ body {
     top: -15px;
     right: 7px;
     z-index: 5;
+}
+/* Below .Amplora-v1-text is only visible for the current Amplora V1 */
+.pricing-card .Amplora-v1-text {
+    font-size: 29px;
+    font-weight: bold;
+}
+.pricing-card .tempor-plan-text {
+    font-size: 18px;
+    font-family: OutFit;
+    font-weight: 400;
 }
 .pricing-card h5{
     font-size: 20px;
@@ -1165,7 +1179,9 @@ body {
 }
 .pricing-card .features {
     border-top: 1px solid rgba(253, 239, 239, 0.089);
-    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
     border-radius: 10px;
     margin-left: -3px;
 }
@@ -1229,7 +1245,6 @@ body {
 .pricing-card .pro-btn:hover {
     background: linear-gradient(90deg, #1e40af, #2563eb);
     box-shadow: 0 8px 18px rgba(30, 64, 175, 0.45);
-    transform: translateX(-50%) translateY(-3px) scale(1.03);
 }
 
 .pricing-card.founding {
@@ -1244,6 +1259,7 @@ body {
     z-index: 1;
     min-height: 630px;
 }
+
 .pricing-card.founding img {
     position: absolute;
     width: 140px;
@@ -1295,20 +1311,40 @@ body {
 .pricing-card .limited-btn:hover {
     background-color: #dc2626;
     box-shadow: 0 8px 20px rgba(220, 38, 38, 0.45);
-    transform: translateX(-50%) translateY(-3px) scale(1.05);
 }
 
 @media (min-width: 1850px) {
     .pricing-card {
-        min-height: 630px;
+        min-height: 590px;
+        max-height: 590px;
+    }
+    .pricing-card.founding {
+        min-height: 590px;
+        max-height: 590px;
     }
 }
+@media (max-width: 1850px) {
+    .pricing-card {
+        min-height: 590px;
+        max-height: 590px;
+    }
+    .pricing-card.founding {
+        min-height: 590px;
+        max-height: 590px;
+    }
+}
+
 
 @media (max-width: 1750px) {
     .pricing-card {
         padding: 17px 10px;
         padding-top: 40px;
-        
+        max-height: 590px;
+        min-height: 590px;
+    }
+    .pricing-card.founding {
+        max-height: 590px;
+        min-height: 590px;
     }
     .pricing-section .pricing-cards-container {
         margin-top: 60px;
@@ -1316,13 +1352,13 @@ body {
 }
 @media (max-width: 1590px) {
     .pricing-card { 
-        margin-top: 40px;
+        margin-top: 0px;
         padding-top: 40px;
         padding-bottom: 100px;
     }
     .pricing-card.founding {
         margin-left: auto; margin-right: auto;
-        margin-top: 40px;
+        margin-top: 5px;
         min-height: auto;
     }
 }
@@ -1330,14 +1366,16 @@ body {
     .pricing-card {
         min-width: 100%;
         margin-top: 0px;
-        min-height: 700px;
+        min-height: 635px;
+        max-height: auto;
         width: 100%;
     }
     .pricing-card.founding {
         width: 100%;
         min-width: 100%;
         margin-top: 0px;
-        min-height: 700px;
+        min-height: 635px;
+        max-height: fit-content;
     }
     .pricing-card img{
         width: 100px;
@@ -1350,12 +1388,15 @@ body {
         right: 7px;
     }
 }
-@media (max-width: 740px) {
+@media (max-width: 890px) {
     .pricing-card {
         margin-top: 40px;
         width: 97%;
         min-width: 97%;
-        min-height: auto;
+        min-height: 635px;
+    }
+    .pricing-card .Amplora-v1-text {
+        font-size: 18px;
     }
     .pricing-card img{
         width: 140px;
@@ -1379,6 +1420,17 @@ body {
     }
     .pricing-strcture-container {
         margin-top: 0px;
+    }
+}
+@media (max-width: 430px) {
+    .pricing-card {
+        margin-top: 40px;
+        width: 97%;
+        min-width: 97%;
+        min-height: auto;
+    }
+    .pricing-card.founding {
+        min-height: auto;
     }
 }
 
@@ -1445,6 +1497,86 @@ body {
 }
 .faq-section .faqs-container .faq-card .faq-icon.open {
   transform: rotate(180deg);
+}
+
+.faq-sec-cta-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  padding: 0 20px;
+}
+
+/* Main card container */
+.faq-sec-cta-container {
+  background: #0e0f12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 28px 24px;
+  border-radius: 16px;
+  max-width: 1150px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Icon */
+.faq-sec-cta-contact-icon {
+  font-size: 30px;
+  color: #00ffff;
+  margin-bottom: 10px;
+}
+
+/* Title */
+.faq-sec-cta-contact-title {
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+/* Subtitle */
+.faq-sec-cta-contact-sub {
+  color: #b6bdc7;
+  font-size: 0.98rem;
+  margin-bottom: 18px;
+}
+
+/* Contact button */
+.faq-sec-cta-contact-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #00ffff;
+  color: #000;
+  font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.faq-sec-cta-contact-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media (max-width: 576px) {
+  .faq-sec-cta-container {
+    padding: 22px 18px;
+  }
+
+  .faq-sec-cta-contact-title {
+    font-size: 1.35rem;
+  }
+
+  .faq-sec-cta-contact-sub {
+    font-size: 0.92rem;
+  }
+
+  .faq-sec-cta-contact-btn {
+    width: 100%;
+    padding: 12px 0;
+  }
 }
 
 @media (max-width: 700px) {
