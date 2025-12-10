@@ -1875,9 +1875,22 @@ body {
     cursor: pointer;
 }
 
+.contact-section-msg {
+    color: var(--light-paragraph-color);
+    font-style: italic;
+    color: rgb(51, 206, 245);
+    position: absolute;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-size: 13px;
+    bottom: 55px;
+}
+
 .contact-section .form-container button {
     margin-top: 20px;
     background-image: linear-gradient(to right, #3B82F6, #06B6D4);
+    width: 100%;
     color: white;
     padding: 10px 20px;
     font-size: 17px;

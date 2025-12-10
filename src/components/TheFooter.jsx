@@ -1,8 +1,8 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from 'react'
-import AmploraLogo from "../../../../../../../assets/amploraLogo.svg"
-import nxtdevLogo from '../../../../../../../assets/nxtdev.png'
-import bininstructionsLogo from '../../../../../../../assets/logo.webp'
+import AmploraLogo from "../assets/amploraLogo.svg"
+import nxtdevLogo from '../assets/nxtdev.png'
+import bininstructionsLogo from '../assets/logo.webp'
 import { Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { FaInstagram, FaFacebookF, FaTwitter } from "react-icons/fa";
@@ -34,7 +34,7 @@ function TheFooter () {
           <div className="row d-flex justify-content-center align-items-start footer-content">
             <div className="col-12 col-md-6 col-lg-5 brand-identity mb-4 mb-md-0">
               <a
-                href="/partners/products/amplora"
+                href="/"
                 style={{ textDecoration: "none" }}
               >
                 <img src={AmploraLogo} alt="" />
@@ -42,7 +42,7 @@ function TheFooter () {
               </a>
               <h6>Automating your social media, from creation to posting.</h6>
               <a
-                href="/partners/products/amplora/waitinglist"
+                href="/WaitListForm"
                 style={{ width: "100%" }}
               >
                 <button>Join Waitlist</button>
@@ -54,21 +54,21 @@ function TheFooter () {
                 <h5>Product</h5>
                 <div className="d-flex flex-column ms-1">
                   <a
-                    href="/partners/products/amplora/#features"
+                    href="/#features"
                     className="footer-links"
                   >
                     Features
                     <div className="underline-effect"></div>
                   </a>
                   <a
-                    href="/partners/products/amplora/#pricing"
+                    href="/#pricing"
                     className="footer-links"
                   >
                     Pricing
                     <div className="underline-effect"></div>
                   </a>
                   <a
-                    href="/partners/products/amplora/#faq"
+                    href="/#faq"
                     className="footer-links"
                   >
                     FAQ
@@ -94,14 +94,14 @@ function TheFooter () {
                 <h5>Support</h5>
                 <div className="d-flex flex-column ms-1">
                   <a
-                    href="/partners/products/amplora/#faq"
+                    href="/#faq"
                     className="footer-links"
                   >
                     FAQs
                     <div className="underline-effect"></div>
                   </a>
                   <a
-                    href="/partners/products/amplora/#contact"
+                    href="/#contact"
                     className="footer-links"
                   >
                     Contact US
@@ -115,14 +115,14 @@ function TheFooter () {
                 <h5>Legal</h5>
                 <div className="d-flex flex-column ms-1">
                   <a
-                    href="/partners/products/amplora/privacy-policy"
+                    href="/AmploraPrivacyPolicy"
                     className="footer-links"
                   >
                     Privacy Policy
                     <div className="underline-effect"></div>
                   </a>
                   <a
-                    href="/partners/products/amplora/TermsOfService"
+                    href="/TermsServices"
                     className="footer-links"
                   >
                     Terms of Service

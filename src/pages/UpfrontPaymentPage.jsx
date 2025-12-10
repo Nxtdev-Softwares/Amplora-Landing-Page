@@ -1,7 +1,7 @@
 import {useState, useEffect, useRef} from 'react'
 
 // Impmorting icons and images
-import AmploraLogo from "../../../../../assets/amploraLogo.svg";
+import AmploraLogo from "../assets/amploraLogo.svg";
 import { Sun } from 'lucide-react';
 import { Moon } from 'lucide-react';
 import { NotebookPen } from 'lucide-react';
@@ -14,26 +14,26 @@ import { CornerRightDown } from 'lucide-react';
 import { Zap } from 'lucide-react';
 import { CircleStar } from 'lucide-react';
 import { Check } from 'lucide-react';
-import arrow from "../../../../../assets/arrow.svg";
+import arrow from "../assets/arrow.svg";
 
 import {Col, Row} from "react-bootstrap"
 
-import sideImageBadge from '../../../../../assets/sideImageBadge.png'
-import sideImageRocket from "../../../../../assets/sideImageRocket.png";
-import waitlistMockup from "../../../../../assets/upfrontDashboard.png";
+import sideImageBadge from '../assets/sideImageBadge.png'
+import sideImageRocket from "../assets/sideImageRocket.png";
+import waitlistMockup from "../assets/upfrontDashboard.png";
 
-import "./Amplora/styles/WaitListFormPage.css";
+import "../styles/WaitListFormPage.css";
 import { useLocation, useParams } from 'react-router';
-import NavBar from './Amplora/components/NavBar';
-import TheFooter from './Amplora/components/TheFooter';
+import NavBar from '../components/NavBar';
+import TheFooter from '../components/TheFooter';
 
-import MainHeading from "./Amplora/components/MainHeadings";
-import Subheadings from "./Amplora/components/Subheadings";
-import EachScrollReveal from "./Amplora/components/EachScrollReveal";
-import ScrollReveal from "./Amplora/components/ScrollReveal";
+import MainHeading from "../components/MainHeadings";
+import Subheadings from "../components/Subheadings";
+import EachScrollReveal from "../components/EachScrollReveal";
+import ScrollReveal from "../components/ScrollReveal";
 
-import api from "../../../../../api/api";
-import { LoadPayhereScript } from '../../../../../api/PaymentGateways';
+import api from "../api/api";
+import { LoadPayhereScript } from '../api/PaymentGateways';
 
 import { Helmet } from "react-helmet";
 import { useSearchParams } from 'react-router-dom';
@@ -269,48 +269,6 @@ function UpfrontPaymentPage() {
                 </div>
 
                 <div className="col-12 col-md-6">
-                  <div className="p-0 mb-2">
-                    <Row
-                      className={`subscription-plan-row ${
-                        selectedPlan ? "active" : ""
-                      } justify-content-start px-3`}
-                    >
-                      {!selectedPlan && (
-                        <label className="w-auto pb-2 sale-float-label no-move">
-                          Subscription Plan
-                        </label>
-                      )}
-                      <select
-                        onChange={(e) => {
-                          setSelectedPlan(e.target.value);
-                        }}
-                        id="product-plan"
-                        className="form-select text-white border-0"
-                        style={{
-                          backgroundColor: "var(--form-inputs-bg)",
-                        }}
-                      >
-                        {plans.map((plan) => {
-                          return (
-                            <option
-                              className="pricing-plan-dropdown"
-                              value={plan.id}
-                              selected={
-                                searchParams
-                                  ? searchParams.get("plan") == plan.planName
-                                  : false
-                              }
-                            >
-                              {plan.planName}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </Row>
-                  </div>
-                </div>
-
-                <div className="col-12 col-md-6">
                   <div
                     className={`website-row ${socialMediaLink ? "active" : ""}`}
                   >
@@ -330,7 +288,7 @@ function UpfrontPaymentPage() {
                   </div>
                 </div>
 
-                <div className="col-12 col-md-6 d-flex align-items-center">
+                <div className="col-12 d-flex align-items-center">
                   <span className="d-flex gap-0 checkbx-container align-items-center">
                     <input
                       className="form-check-input checkbox"

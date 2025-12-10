@@ -8,9 +8,9 @@ import { Sun } from 'lucide-react';
 import { Moon } from 'lucide-react';
 import { Menu } from 'lucide-react';
 import { X } from 'lucide-react';
-import AmploraLogo from '../../../../../../../assets/amploraLogo.svg'
-import nxtdevLogo from '../../../../../../../assets/nxtdev.png'
-import bininstructionsLogo from '../../../../../../../assets/logo.webp'
+import AmploraLogo from '../assets/amploraLogo.svg'
+import nxtdevLogo from '../assets/nxtdev.png'
+import bininstructionsLogo from '../assets/logo.webp'
 
 function NavBar() {
 
@@ -127,7 +127,7 @@ function NavBar() {
           <div className="nav-bar-container d-flex align-items-center">
             <div className="logo d-flex justify-content-center align-items-center">
               <a
-                href="/partners/products/amplora"
+                href="/"
                 className="d-flex gap-2 justify-content-center align-items-center"
                 style={{ textDecoration: "none" }}
               >
@@ -136,23 +136,23 @@ function NavBar() {
               </a>
             </div>
             <div className={` ${isNavToggleOpen ? "" : ""} links`}>
-              <a href="/partners/products/amplora/#features">
+              <a href="/#features">
                 <h5>Features</h5>
                 <div className="nav-underlines"></div>
               </a>
-              <a href="/partners/products/amplora/#pricing">
+              <a href="/#pricing">
                 <h5>Pricing</h5>
                 <div className="nav-underlines"></div>
               </a>
-              <a href="/partners/products/amplora/#faq">
+              <a href="/#faq">
                 <h5>FAQ</h5>
                 <div className="nav-underlines"></div>
               </a>
-              <a href="/partners/products/amplora/#contact">
+              <a href="/#contact">
                 <h5>Contact</h5>
                 <div className="nav-underlines"></div>
               </a>
-              <a href="/partners/products/amplora">
+              <a href="">
                 <h5>About</h5>
                 <div className="nav-underlines"></div>
               </a>
@@ -165,7 +165,7 @@ function NavBar() {
                   <Moon className="theme-icon" />
                 )}
               </button>
-              <a href="/partners/products/amplora/waitinglist">
+              <a href="/WaitListForm">
                 <button className="main-cta">Join Waitlist</button>
               </a>
             </div>
@@ -205,31 +205,31 @@ function NavBar() {
               </div>
               <div className={` ${isNavToggleOpen ? "" : ""} row d-flex`}>
                 <div className="">
-                  <a href="/partners/products/amplora/#features">
+                  <a href="/#features">
                     <h5>Features</h5>
                     <div className="nav-underlines"></div>
                   </a>
                 </div>
                 <div className="">
-                  <a href="/partners/products/amplora/#pricing">
+                  <a href="/#pricing">
                     <h5>Pricing</h5>
                     <div className="nav-underlines"></div>
                   </a>
                 </div>
                 <div className="">
-                  <a href="/partners/products/amplora/#faq">
+                  <a href="/#faq">
                     <h5>FAQ</h5>
                     <div className="nav-underlines"></div>
                   </a>
                 </div>
                 <div className="">
-                  <a href="/partners/products/amplora/#contact">
+                  <a href="/#contact">
                     <h5>Contact</h5>
                     <div className="nav-underlines"></div>
                   </a>
                 </div>
                 <div className="">
-                  <a href="/partners/products/amplora">
+                  <a href="/">
                     <h5>About</h5>
                     <div className="nav-underlines"></div>
                   </a>
@@ -244,7 +244,7 @@ function NavBar() {
                   )}
                 </button>
                 <a
-                  href="/partners/products/amplora/waitinglist"
+                  href="/WaitListForm"
                   className="cta-link"
                 >
                   <button className="main-cta">Join Waitlist</button>

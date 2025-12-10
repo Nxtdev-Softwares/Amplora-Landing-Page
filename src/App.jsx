@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Amplora from './pages/LandingPages/ProductDevelopedWithPartners/NXTDEV/pages/Amplora/pages/Amplora.jsx'
-import WaitListForm from './pages/LandingPages/ProductDevelopedWithPartners/NXTDEV/pages/WaitListForm.jsx'
-import UpfrontPaymentPage from './pages/LandingPages/ProductDevelopedWithPartners/NXTDEV/pages/UpfrontPaymentPage.jsx'
-import AmploraPrivacyPolicy from './pages/LandingPages/ProductDevelopedWithPartners/NXTDEV/pages/Amplora/pages/AmploraPrivacyPolicy.jsx'
-import TermsServices from './pages/LandingPages/ProductDevelopedWithPartners/NXTDEV/pages/Amplora/pages/TermsServices.jsx'
-// import FounderTerms from './pages/LandingPages/ProductDevelopedWithPartners/NXTDEV/pages/Amplora/pages/FounderTerms.jsx'
+import Amplora from './pages/Amplora.jsx'
+import WaitListForm from './pages/WaitListForm.jsx'
+import UpfrontPaymentPage from './pages/UpfrontPaymentPage.jsx'
+import AmploraPrivacyPolicy from './pages/AmploraPrivacyPolicy.jsx'
+import TermsServices from './pages/TermsServices.jsx'
+// import FounderTerms from './pages/FounderTerms.jsx'
 
 function App() {
 

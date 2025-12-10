@@ -1,7 +1,7 @@
 import {useState, useEffect, useRef} from 'react'
 
 // Impmorting icons and images
-import AmploraLogo from "../../../../../assets/amploraLogo.svg";
+import AmploraLogo from "../assets/amploraLogo.svg";
 import { Sun } from 'lucide-react';
 import { Moon } from 'lucide-react';
 import { NotebookPen } from 'lucide-react';
@@ -18,28 +18,28 @@ import { CornerRightDown } from 'lucide-react';
 import { Zap } from 'lucide-react';
 import { CircleStar } from 'lucide-react';
 import { Check } from 'lucide-react';
-import arrow from "../../../../../assets/arrow.svg";
+import arrow from "../assets/arrow.svg";
 
 import {Col, Row} from "react-bootstrap"
 
-import sideImageBadge from '../../../../../assets/sideImageBadge.png'
-import sideImageRocket from "../../../../../assets/sideImageRocket.png";
-import waitlistMockup from "../../../../../assets/waitlistDashboard.png";
+import sideImageBadge from '../assets/sideImageBadge.png'
+import sideImageRocket from "../assets/sideImageRocket.png";
+import waitlistMockup from "../assets/waitlistDashboard.png";
 
-import successCheck from "../../../../../assets/success-check.png";
+import successCheck from "../assets/success-check.png";
 
-import "./Amplora/styles/WaitListFormPage.css";
+import "../styles/WaitListFormPage.css";
 import { useLocation, useParams } from 'react-router';
-import NavBar from './Amplora/components/NavBar';
-import TheFooter from './Amplora/components/TheFooter';
+import NavBar from '../components/NavBar';
+import TheFooter from '../components/TheFooter';
 
-import MainHeading from "./Amplora/components/MainHeadings";
-import Subheadings from "./Amplora/components/Subheadings";
-import EachScrollReveal from "./Amplora/components/EachScrollReveal";
-import ScrollReveal from "./Amplora/components/ScrollReveal";
+import MainHeading from "../components/MainHeadings";
+import Subheadings from "../components/Subheadings";
+import EachScrollReveal from "../components/EachScrollReveal";
+import ScrollReveal from "../components/ScrollReveal";
 
-import api from "../../../../../api/api";
-import { LoadPayhereScript } from '../../../../../api/PaymentGateways';
+import api from "../api/api";
+import { LoadPayhereScript } from '../api/PaymentGateways';
 
 import { Helmet } from "react-helmet";
 import { useSearchParams } from 'react-router-dom';
@@ -68,20 +68,23 @@ function WaitListForm() {
   };
 
   // The input states
+  // State
   const [name, setName] = useState("");
   const nameRef = useRef(null);
+
   const [email, setEmail] = useState("");
   const emailRef = useRef(null);
-  const [whatsapp, setWhatsapp] = useState("");
-  const whatsappRef = useRef(null);
-  const [brandName, setBrandName] = useState("");
-  const brandNameRef = useRef(null);
-  const [socialMediaLink, setSocialMediaLink] = useState("");
-  const socialMediaLinkRef = useRef(null);
+
   const [role, setRole] = useState("");
   const roleRef = useRef(null);
 
-  const [errorMsg, setErrorMsg] = useState(false)
+  const [socialLink, setSocialLink] = useState("");
+  const socialLinkRef = useRef(null);
+
+  const [privacyChecked, setPrivacyChecked] = useState(false);
+
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
 
@@ -115,47 +118,6 @@ function WaitListForm() {
     window.open(whatsappUrl, "_blank");
   };
 
-  const addUserToWaitingList = async(payUpfront) => {
-    if ((!name || name.trim() == "") || (!email || email.trim() == "") || (!role || role.trim() == "") || !agreed) {
-      setErrorMsg(true);
-      return;
-    }else{
-      const data = {
-        name: document.getElementById("name").value,
-        website: document.getElementById("website").value,
-        email: document.getElementById("email").value,
-        jobTitle: document.getElementById("jobTitle").value,
-        agreed: document.getElementById("defaultCheck1").checked,
-        payUpfront: payUpfront,
-      };
-      const response = await api.post(
-        "/api/v1/partners/products/amplora/waiting-list/adduser",
-        data
-      );
-      if (response.status === 200) {
-        console.log(response.data);
-        if (response.data.status == "ok") {
-          if (response.data.launchPayment) {
-            // Error occurred
-            payhere.onError = function onError(error) {
-              // Note: show an error page
-              console.log("Error:" + error);
-            };
-
-            const paymentData = response.data.paymentData;
-            // alert(JSON.stringify(paymentData));
-
-            payhere.startPayment(paymentData);
-          }
-          setShowSuccess(true);
-        }
-      }
-    }
-
-    setErrorMsg(false);
-
-  }
-
     useEffect(() => {
     if (errorMsg) {
       const fadeTimer = setTimeout(() => setFadeOut(true), 2500); // start fade before removal
@@ -186,6 +148,64 @@ function WaitListForm() {
   useEffect(() => {
     getProductPlans();
   }, []);
+
+  // for joinining the waitlist
+ const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Validation
+    if (!name.trim() || !email.trim() || !role.trim()) {
+      setErrorMsg("Please fill in all required fields");
+      return;
+    }
+
+    if (!privacyChecked) {
+      setErrorMsg("You must agree to the privacy policy");
+      return;
+    }
+
+    setErrorMsg("");
+    setIsSubmitting(true);
+
+    const url = "https://api.sheety.co/13000793e3eae1c815a1c576886bea71/waitlistSignups/sheet1";
+
+    const body = {
+      sheet1: {
+        timestamp: new Date().toISOString(),
+        name: name.trim(),
+        email: email.trim(),
+        role: role.trim(),
+        socialLink: socialLink.trim(),
+        privacyAccepted: privacyChecked ? "Yes" : "No",
+      },
+    };
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      const json = await response.json();
+      console.log("Sheety response:", json);
+
+      setName("");
+      setEmail("");
+      setRole("");
+      setSocialLink("");
+      setPrivacyChecked(false);
+
+      setShowSuccess(true);
+      setFadeOut(true);
+
+    } catch (err) {
+      console.error("Submission failed:", err);
+      alert("Submission failed: " + err.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -244,6 +264,7 @@ function WaitListForm() {
           </h5>
 
           <ScrollReveal className="fade-in-anime">
+            <form onSubmit={handleSubmit}>
             <div className="form-container">
               <div className="row d-flex justify-content-center">
                 <div className="col-12 col-md-6">
@@ -293,7 +314,7 @@ function WaitListForm() {
                 
                 <div className="col-12 col-md-6">
                 <div
-                    className={`website-row ${socialMediaLink ? "active" : ""}`}
+                    className={`website-row ${socialLink ? "active" : ""}`}
                   >
                     <label className="optional-label">(Optional)</label>
                     <label className="sale-float-label">
@@ -303,10 +324,9 @@ function WaitListForm() {
                       type="text"
                       id="website"
                       className="website-input"
-                      value={socialMediaLink}
-                      onChange={(e) => setSocialMediaLink(e.target.value)}
-                      ref={socialMediaLinkRef}
-                      required
+                      value={socialLink}
+                      onChange={(e) => setSocialLink(e.target.value)}
+                      ref={socialLinkRef}
                     />
                   </div>
                 </div>
@@ -317,14 +337,16 @@ function WaitListForm() {
                       className="form-check-input checkbox"
                       type="checkbox"
                       id="defaultCheck1"
+                      checked={privacyChecked}
+                      onChange={(e) => setPrivacyChecked(e.target.checked)}
                     />
                     <p className='mb-2'>
                       I agree Amplora’s{" "}
-                      <a href="/partners/products/amplora/privacy-policy">
+                      <a href="/AmploraPrivacyPolicy">
                         Privacy Policy
                       </a>{" "}
                       &{" "}
-                      <a href="/partners/products/amplora/TermsOfService">
+                      <a href="/TermsServices">
                         Terms of Service.
                       </a>
                     </p>
@@ -334,12 +356,10 @@ function WaitListForm() {
 
                 <div className="row mb-3 mt-md-1 mt-2">
                       <button
+                      type="submit" disabled={isSubmitting}
                       className="cta-btn"
-                      onClick={() => {
-                        addUserToWaitingList(false);
-                      }}
                     >
-                      Join Waitlist - It’s Free
+                      {isSubmitting ? "Submitting..." : "Join Waitlist"}
                     </button>
                     <p className="btn-supports bottom">
                       (🆓 Free - early updates & insider access)
@@ -350,6 +370,7 @@ function WaitListForm() {
                 Your info is 100% secure • No spam • Cancel anytime
               </p>
             </div>
+               </form>
           </ScrollReveal>
         </div>
 
@@ -418,7 +439,7 @@ function WaitListForm() {
               <span className="special">new features</span>, and earn an 
               <span className="special"> exclusive badge.</span>
             </p>
-            <a href="/partners/products/amplora/UpfrontPaymentPage" className='d-flex mb-2' style={{textDecoration: "none", width: "100px"}}>
+            <a href="/UpfrontPaymentPage" className='d-flex mb-2' style={{textDecoration: "none", width: "100px"}}>
               <button className="default-btn">Claim Founders Access</button>
             </a>
           </div>
@@ -472,7 +493,7 @@ function WaitListForm() {
                 <h4>Direct influence on product development</h4>
               </div>
 
-              <a href="/partners/products/amplora/privacy-policy" id='policy'>
+              <a href="/AmploraPrivacyPolicy" id='policy'>
                 <p>View Privacy Policy</p>
               </a>
             </div>

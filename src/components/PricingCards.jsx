@@ -1,5 +1,5 @@
 import { Check } from 'lucide-react';
-import proBadge from "../../../../../../../assets/pro-pricing-badge.png";
+import proBadge from "../assets/pro-pricing-badge.png";
 
 function PricingCards(props) {
     return (

@@ -5,7 +5,7 @@ import Lottie from "lottie-react";
 
 import {Row, Col} from "react-bootstrap";
 
-import api from "../../../../../../../api/api";
+import api from "../api/api";
 
 // Importing components
 import NavBar from "../components/NavBar";
@@ -23,32 +23,32 @@ import '../styles/WaitListFormPage.css'
 import '../styles/NavBar.css'
 
 // Importing images
-import heroProfileMockup from "../../../../../../../assets/heroProfileMockup.svg";
+import heroProfileMockup from "../assets/heroProfileMockup.svg";
 
-import contentPlanning from "../../../../../../../assets/contentplanning.json"
-import drawing from "../../../../../../../assets/knowwhatworks.json"
-import rocketPostAnime from "../../../../../../../assets/confidenceposting.json"
-import trackEngagement from "../../../../../../../assets/growWithoutBurntout.json"
-import withGraph from "../../../../../../../assets/withGraph.svg"
-import withoutGraph from "../../../../../../../assets/withoutGraph.svg"
-import limitedBadge from "../../../../../../../assets/limited-pricing-badge.png"
+import contentPlanning from "../assets/contentplanning.json"
+import drawing from "../assets/knowwhatworks.json"
+import rocketPostAnime from "../assets/confidenceposting.json"
+import trackEngagement from "../assets/growWithoutBurntout.json"
+import withGraph from "../assets/withGraph.svg"
+import withoutGraph from "../assets/withoutGraph.svg"
+import limitedBadge from "../assets/limited-pricing-badge.png"
 import { Lock, Rocket, Trophy, Kanban} from 'lucide-react';
 import { X } from 'lucide-react';
-import xMark from "../../../../../../../assets/xMark.json"
-import tickMark from "../../../../../../../assets/tickMark.json"
+import xMark from "../assets/xMark.json"
+import tickMark from "../assets/tickMark.json"
 import { Check, Equal, Plus } from 'lucide-react';
 import { FaRobot, FaChartBar, FaEnvelope, FaClock, FaBolt, FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaYoutube, FaPinterest, FaTiktok } from "react-icons/fa";
-import ctaVisual from "../../../../../../../assets/ctaVisualAnime.json"
-import instagramAnime from "../../../../../../../assets/instagram.json"
-import facebookAnime from "../../../../../../../assets/facebook.json"
-import twitterAnime from "../../../../../../../assets/twitter.json"
+import ctaVisual from "../assets/ctaVisualAnime.json"
+import instagramAnime from "../assets/instagram.json"
+import facebookAnime from "../assets/facebook.json"
+import twitterAnime from "../assets/twitter.json"
 import { Mail } from 'lucide-react';
 import { Smartphone } from 'lucide-react';
 import { ChevronDown } from 'lucide-react';
-import instaLogo from "../../../../../../../assets/instagram.png"
-import facebookLogo from "../../../../../../../assets/facebook.png"
-import twitterLogo from "../../../../../../../assets/twitterLogo.svg"
-import threadsLogo from "../../../../../../../assets/threads.png"
+import instaLogo from "../assets/instagram.png"
+import facebookLogo from "../assets/facebook.png"
+import twitterLogo from "../assets/twitterLogo.svg"
+import threadsLogo from "../assets/threads.png"
 import { Helmet } from "react-helmet";
 
 function Amplora() {
@@ -190,23 +190,6 @@ function Amplora() {
     };
     }, [useCaseDropdown]);
 
-
-    const sendMessage = async() => {
-      const data = {
-        fullName: document.getElementById("fullName").value,
-        email: document.getElementById("email").value,
-        company: document.getElementById("company").value,
-        useCase: useCase,
-        message: document.getElementById("message").value
-      }
-      const response = await api.post("/api/v1/partners/products/amplora/message/send", data);
-      if (response.status === 200){
-        if(response.data.status == "ok"){
-          alert("Message sent!");
-        }
-      }
-    }
-
     useEffect(() => {
         function handleClick(e) {
         if (!useCaseDropdown) return;
@@ -219,6 +202,38 @@ function Amplora() {
         document.addEventListener("click", handleClick);
         return () => document.removeEventListener("click", handleClick);
     }, [useCaseDropdown]);
+
+    // Contact form states
+    const [status, setStatus] = useState("")
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      formData.append("access_key", "b2174447-ce3c-48fc-b917-d78377de438f");
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+        const data = await response.json();
+        if (data.success) {
+          setStatus("Thanks! we'll be in touch soon!");
+          form.reset();
+          setUseCase("Select Use Case");
+        } else {
+          setStatus("Something went wrong. Please try again.");
+          console.error("Web3Forms error:", data);
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Submission failed: " + err.message);
+      }
+      setTimeout(() => {
+    setStatus("");
+  }, 3000);
+    };
 
     return (
       <>
@@ -260,10 +275,10 @@ function Amplora() {
                 </h5>
 
                 <div className="ctas d-flex gap-3">
-                  <Link to="/partners/products/amplora/waitinglist">
+                  <Link to="/WaitListForm">
                     <button className="main-btn">Join FREE Waitlist</button>
                   </Link>
-                  <Link to="/partners/products/amplora/UpfrontPaymentPage">
+                  <Link to="/UpfrontPaymentPage">
                     <button className="secondary-btn">
                       Claim 70% Off Now
                     </button>
@@ -428,10 +443,10 @@ function Amplora() {
             <h1>Spots are extremely limited - Claim yours now!</h1>
 
             <div className="d-flex">
-              <a href="/partners/products/amplora/waitinglist">
+              <a href="/WaitListForm">
                 <button className="primary">Join FREE waitlist</button>
               </a>
-              <a href="/partners/products/amplora/UpfrontPaymentPage">
+              <a href="/UpfrontPaymentPage">
                 <button className="secondary">Get lifetime</button>
               </a>
             </div>
@@ -671,7 +686,7 @@ function Amplora() {
                 ]}
                 btnText="Join Early Access"
                 btnClassName="pro-btn"
-                buttonPath="/partners/products/amplora/waitinglist"/>
+                buttonPath="WaitListForm"/>
           </div>
 
           <div className="col-12 col-md-6 mt-5">
@@ -720,7 +735,7 @@ function Amplora() {
                   <h2 className="mb-5 pb-md-0">
                     🔒 This offer will never return.
                   </h2>
-                  <a href="/partners/products/amplora/UpfrontPaymentPage">
+                  <a href="/UpfrontPaymentPage">
                   <button className="limited-btn">
                     Claim Founder Deal
                   </button>
@@ -776,7 +791,7 @@ function Amplora() {
                     If you’ve got anything you want to clarify, we’re here to help.
                   </p>
 
-                  <a href="/partners/products/amplora/#contact" className="faq-sec-cta-contact-btn">
+                  <a href="/#contact" className="faq-sec-cta-contact-btn">
                     Contact Us
                   </a>
                 </div>
@@ -794,10 +809,10 @@ function Amplora() {
               <h5>Only a few spots left, act now to secure your place.</h5>
               <div className="d-flex justify-content-center align-items-center justify-content-md-start">
                 <ScrollReveal className="move-right-anime">
-                  <a href="/partners/products/amplora/waitinglist">
+                  <a href="WaitListForm">
                     <button className="primary-btn">Join Free Waitlist</button>
                   </a>
-                  <a href="/partners/products/amplora/UpfrontPaymentPage">
+                  <a href="/UpfrontPaymentPage">
                     <button className="secondary-btn">
                       Claim founder Spot
                     </button>
@@ -851,15 +866,18 @@ function Amplora() {
             <div className="col-12 col-md-6" style={{zIndex: "7"}}>
               <ScrollReveal className="move-down-anime">
                 <div className="form-container" ref={contactFormRef}>
+                  <form onSubmit={handleSubmit}>
                   <h3>Send Us a Message</h3>
                   <input
                     type="text"
                     id="fullName"
+                    name='name'
                     placeholder="Enter your full Name"
                   />
-                  <input type="text" id="email" placeholder="Work Email" />
+                  <input type="text" id="email" placeholder="Work Email" name="email" />
                   <input
                     type="text"
+                    name="company"
                     id="company"
                     placeholder="Company/ Brand"
                   />
@@ -878,6 +896,7 @@ function Amplora() {
                       <span>{useCase}</span>
                       <ChevronDown className="down-icon" />
                     </div>
+                    <input type="hidden" name="use_case" value={useCase} />
                     {useCaseDropdown && (
                       <div className="usecase-dropdown">
                         <h6
@@ -950,16 +969,16 @@ function Amplora() {
 
                   <textarea
                     type="text"
+                    name="message"
                     id="message"
                     placeholder="Tell us what you’d like to know or ask here…"
                   />
-                  <button
-                    onClick={() => {
-                      sendMessage();
-                    }}
-                  >
+                  {status && <p className="contact-section-msg">{status}</p>}
+                  <button type="submit">
                     Send Message
                   </button>
+                
+                  </form>
                 </div>
               </ScrollReveal>
             </div>
@@ -990,7 +1009,7 @@ function Amplora() {
                       <h6>
                         Your information is protected. Learn more in our{" "}
                         <a
-                          href="/partners/products/amplora/privacy-policy"
+                          href="AmploraPrivacyPolicy"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -998,7 +1017,7 @@ function Amplora() {
                         </a>{" "}
                         and{" "}
                         <a
-                          href="/partners/products/amplora/TermsOfService"
+                          href="TermsServices"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
