@@ -1,5 +1,6 @@
 import {useState, useEffect, useRef} from 'react'
 
+
 // Impmorting icons and images
 import AmploraLogo from "../assets/amploraLogo.svg";
 import { Sun } from 'lucide-react';
@@ -207,6 +208,13 @@ function WaitListForm() {
     }
   };
 
+  const scrollToSection = (id) => {
+  const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -227,7 +235,18 @@ function WaitListForm() {
           exclusive access, product waiting list, SaaS beta program, notify me, early user registration"
         />
       </Helmet>
-      <NavBar />
+      
+      <div className="non-nav-logo d-flex justify-content-center align-items-center">
+        <a
+          href="#/"
+          className="d-flex gap-2 justify-content-center align-items-center"
+          style={{ textDecoration: "none" }}
+        >
+          <img src={AmploraLogo} alt="" />
+          <h1>Amplora</h1>
+        </a>
+      </div>
+
       <LoadPayhereScript />
       <div id="main-sec" className="waitlist-form-page">
         <div className="d-flex justify-content-center align-items-center flex-column container-fluid form-hero">
@@ -238,11 +257,11 @@ function WaitListForm() {
                 Join Amplora early - the platform for creators who want data-driven growth, not guesswork. Be part of building what comes next.
               </h2>
               <div className="d-flex justify-content-center justify-content-lg-start gap-4">
-                <a href="#form-section">
-                  <button className="cta-btn">Join Waitlist</button>
+                <a >
+                  <button onClick={() => scrollToSection("form-section")} className="cta-btn">Join Waitlist</button>
                 </a>
-                <a href="#why-reserve-section">
-                  <button className="secondary-btn">Why Reserve?</button>
+                <a>
+                  <button onClick={() => scrollToSection("why-reserve-section")} className="secondary-btn">Why Reserve?</button>
                 </a>
               </div>
             </div>
@@ -342,11 +361,11 @@ function WaitListForm() {
                     />
                     <p className='mb-2'>
                       I agree Amplora’s{" "}
-                      <a href="/AmploraPrivacyPolicy">
+                      <a href="#/AmploraPrivacyPolicy" target="_blank" rel="noopener noreferrer">
                         Privacy Policy
                       </a>{" "}
                       &{" "}
-                      <a href="/TermsServices">
+                      <a href="#/TermsServices" target="_blank" rel="noopener noreferrer">
                         Terms of Service.
                       </a>
                     </p>
@@ -439,7 +458,7 @@ function WaitListForm() {
               <span className="special">new features</span>, and earn an 
               <span className="special"> exclusive badge.</span>
             </p>
-            <a href="/UpfrontPaymentPage" className='d-flex mb-2' style={{textDecoration: "none", width: "100px"}}>
+            <a href="#/UpfrontPaymentPage" className='d-flex mb-2' style={{textDecoration: "none", width: "100px"}}>
               <button className="default-btn">Claim Founders Access</button>
             </a>
           </div>
@@ -450,8 +469,8 @@ function WaitListForm() {
         </div>
 
         <div className="d-flex justify-content-center align-items-center flex-column waitlist-cta-section text-center">
-          <a href="#main-sec">
-            <ArrowUp className="top-move-btn" />
+          <a >
+            <ArrowUp className="top-move-btn" onClick={() => scrollToSection("form-section")}/>
           </a>
 
           <div className="row d-flex justify-content-center align-items-start content">
@@ -467,8 +486,8 @@ function WaitListForm() {
               </h2>
               </Row>
               <div className="d-flex btn-container justify-content-start flex-column">
-                <a href="#form-section">
-                  <button className="main-btn">Join Early Access</button>
+                <a style={{textDecoration: "none"}}>
+                  <button  onClick={() => scrollToSection("form-section")} className="main-btn">Join Early Access</button>
                 </a>
                 <p>( 100% Free - get early updates, insider access & bonuses )</p>
               </div>
@@ -500,8 +519,6 @@ function WaitListForm() {
           </div>
         </div>
       </div>
-
-      <TheFooter />
 
       {showSuccess && (
         <>

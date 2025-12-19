@@ -106,20 +106,17 @@ function NavBar() {
     }, []);
 
     const location = useLocation();
-    useEffect(() => {
-    const navType = window.performance.getEntriesByType("navigation")[0]?.type;
-
-    if (location.hash) {
-      if (navType !== "reload") {
-        const el = document.querySelector(location.hash);
-        if (el) {
-          setTimeout(() => {
-            el.scrollIntoView({ behavior: "smooth" });
-          }, 100);
-        }
+     const handleScroll = (id) => {
+    if (location.pathname === "/" || location.pathname === "") {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
       }
+    } else {
+      // Optionally: redirect to landing page first
+      window.location.href = `/#${id}`;
     }
-  }, [location]);
+  };
 
     return (
       <>
@@ -127,7 +124,7 @@ function NavBar() {
           <div className="nav-bar-container d-flex align-items-center">
             <div className="logo d-flex justify-content-center align-items-center">
               <a
-                href="/"
+                href=""
                 className="d-flex gap-2 justify-content-center align-items-center"
                 style={{ textDecoration: "none" }}
               >
@@ -136,19 +133,19 @@ function NavBar() {
               </a>
             </div>
             <div className={` ${isNavToggleOpen ? "" : ""} links`}>
-              <a href="/#features">
+              <a onClick={() => handleScroll("features")}>
                 <h5>Features</h5>
                 <div className="nav-underlines"></div>
               </a>
-              <a href="/#pricing">
+              <a onClick={() => handleScroll("pricing")}>
                 <h5>Pricing</h5>
                 <div className="nav-underlines"></div>
               </a>
-              <a href="/#faq">
+              <a onClick={() => handleScroll("faq")}>
                 <h5>FAQ</h5>
                 <div className="nav-underlines"></div>
               </a>
-              <a href="/#contact">
+              <a onClick={() => handleScroll("contact")}>
                 <h5>Contact</h5>
                 <div className="nav-underlines"></div>
               </a>
@@ -165,7 +162,7 @@ function NavBar() {
                   <Moon className="theme-icon" />
                 )}
               </button>
-              <a href="/WaitListForm">
+              <a href="#/WaitListForm">
                 <button className="main-cta">Join Waitlist</button>
               </a>
             </div>
@@ -205,25 +202,25 @@ function NavBar() {
               </div>
               <div className={` ${isNavToggleOpen ? "" : ""} row d-flex`}>
                 <div className="">
-                  <a href="/#features">
+                  <a onClick={() => handleScroll("features")}>
                     <h5>Features</h5>
                     <div className="nav-underlines"></div>
                   </a>
                 </div>
                 <div className="">
-                  <a href="/#pricing">
+                  <a onClick={() => handleScroll("pricing")}>
                     <h5>Pricing</h5>
                     <div className="nav-underlines"></div>
                   </a>
                 </div>
                 <div className="">
-                  <a href="/#faq">
+                  <a onClick={() => handleScroll("faq")}>
                     <h5>FAQ</h5>
                     <div className="nav-underlines"></div>
                   </a>
                 </div>
                 <div className="">
-                  <a href="/#contact">
+                  <a onClick={() => handleScroll("contact")}>
                     <h5>Contact</h5>
                     <div className="nav-underlines"></div>
                   </a>
@@ -244,7 +241,7 @@ function NavBar() {
                   )}
                 </button>
                 <a
-                  href="/WaitListForm"
+                  href="#/WaitListForm"
                   className="cta-link"
                 >
                   <button className="main-cta">Join Waitlist</button>

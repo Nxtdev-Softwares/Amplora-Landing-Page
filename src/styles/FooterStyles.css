@@ -72,6 +72,7 @@
     font-weight: bold;
 }
 .the-footer .footer-content .section a, Link {
+    cursor: pointer;
     text-decoration: none;
     color: rgb(201, 203, 212);
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
+import AmploraLogo from "../assets/amploraLogo.svg";
 import Footer from "../components/TheFooter";
 
 import {Helmet} from "react-helmet"
@@ -13,6 +14,13 @@ function TermsServices() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const scrollToSection = (id) => {
+  const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <>
@@ -30,7 +38,18 @@ function TermsServices() {
           content="bininstructions, nxtdev, Amplora, Amplora Terms of service, terms of service, website terms, legal agreement, user agreement, service terms, SaaS terms and conditions, digital platform policy, website usage policy, terms of use"
         />
       </Helmet>
-      <NavBar />
+      
+      <div className="non-nav-logo d-flex justify-content-center align-items-center">
+        <a
+          href="#/"
+          className="d-flex gap-2 justify-content-center align-items-center"
+          style={{ textDecoration: "none" }}
+        >
+          <img src={AmploraLogo} alt="" />
+          <h1>Amplora</h1>
+        </a>
+      </div>
+
       <div className="privacy-policy-page">
         <div className="header d-flex flex-column">
           <h1>Amplora Terms of Service</h1>
@@ -137,37 +156,37 @@ function TermsServices() {
             <div className={`nav-container ${scrolled ? "scrolled" : ""}`}>
               <h5>This Policy is organized into the following sections:</h5>
               <div className="links">
-                <a href="#acceptTerms">
+                <a onClick={() => scrollToSection("acceptTerms")}>
                   <h6>1. Acceptance of Terms</h6>
                 </a>
-                <a href="#services">
+                <a onClick={() => scrollToSection("services")}>
                   <h6>2. Services</h6>
                 </a>
-                <a href="#accRegister">
+                <a onClick={() => scrollToSection("accRegister")}>
                   <h6>3. Account Registration</h6>
                 </a>
-                <a href="#paymentPricing">
+                <a onClick={() => scrollToSection("paymentPricing")}>
                   <h6>4. Payment & Pricing</h6>
                 </a>
-                <a href="#userConduct">
+                <a onClick={() => scrollToSection("userConduct")}>
                   <h6>5. User Conduct</h6>
                 </a>
-                <a href="#property">
+                <a onClick={() => scrollToSection("property")}>
                   <h6>6. Intellectual Property</h6>
                 </a>
-                <a href="#limitation">
+                <a onClick={() => scrollToSection("limitation")}>
                   <h6>7. Limitation of Liability</h6>
                 </a>
-                <a href="#termination">
+                <a onClick={() => scrollToSection("termination")}>
                   <h6>8. Termination</h6>
                 </a>
-                <a href="#changesTerms">
+                <a onClick={() => scrollToSection("changesTerms")}>
                   <h6>9. Changes to Terms</h6>
                 </a>
-                <a href="#governingLaw">
+                <a onClick={() => scrollToSection("governingLaw")}>
                   <h6>10. Governing Law</h6>
                 </a>
-                <a href="#contactUs">
+                <a onClick={() => scrollToSection("contactUs")}>
                   <h6>11. Contact us</h6>
                 </a>
               </div>
@@ -175,8 +194,6 @@ function TermsServices() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }

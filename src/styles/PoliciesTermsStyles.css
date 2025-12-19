@@ -70,6 +70,7 @@
     margin-bottom: 15px;
 }
 .privacy-policy-page .links-container .nav-container a {
+    cursor: pointer;
     text-decoration: none;
 }
 .privacy-policy-page .links-container .nav-container h6 {
@@ -105,6 +106,20 @@
     margin-top: 35px;
     scroll-margin-top: 100px;
 }
+.privacy-policy-page .information-container h4 {
+    color: var(--privacy-info-headings);
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 25px;
+}
+
+.privacy-policy-page .information-container h5 {
+    color: var(--privacy-info-headings);
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
 .privacy-policy-page .information-container h6 {
     color: var(--privacy-info-paragraphs);
     font-weight: 400;
@@ -118,6 +133,22 @@
     font-size: 16px;
     padding-left: 1px;
     margin-top: 4px;
+}
+
+.founder-cta-button {
+    background-color: rgb(30, 127, 253);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: none;
+    transition: 0.3s;
+}
+.founder-cta-button:hover {
+    background-color: rgb(0, 83, 190);
+    transform: translateY(-5px);
 }
 
 @media (max-width: 1340px) {

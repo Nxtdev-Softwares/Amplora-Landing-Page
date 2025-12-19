@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/TheFooter";
+import AmploraLogo from "../assets/amploraLogo.svg";
 
 import "../styles/PoliciesTermsStyles.css"
 import { Helmet } from "react-helmet";
@@ -25,6 +26,13 @@ function AmploraPrivacyPolicy() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (id) => {
+  const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -42,7 +50,18 @@ function AmploraPrivacyPolicy() {
           data security, SaaS privacy policy"
         />
       </Helmet>
-      <NavBar />
+      
+      <div className="non-nav-logo d-flex justify-content-center align-items-center">
+        <a
+          href="#/"
+          className="d-flex gap-2 justify-content-center align-items-center"
+          style={{ textDecoration: "none" }}
+        >
+          <img src={AmploraLogo} alt="" />
+          <h1>Amplora</h1>
+        </a>
+      </div>
+
       <div className="privacy-policy-page">
         <div className="header d-flex flex-column">
           <h1>Amplora Privacy-Policy</h1>
@@ -149,31 +168,31 @@ function AmploraPrivacyPolicy() {
             <div className={`nav-container ${scrolled ? "scrolled" : ""}`}>
               <h5>This Policy is organized into the following sections:</h5>
               <div className="links">
-                <a href="#prIntroduction">
+                <a onClick={() => scrollToSection("prIntroduction")}>
                   <h6>1. Introduction</h6>
                 </a>
-                <a href="#prCollectedInfo">
+                <a onClick={() => scrollToSection("prCollectedInfo")}>
                   <h6>2. Information we collect</h6>
                 </a>
-                <a href="#prUsedInfo">
+                <a onClick={() => scrollToSection("prUsedInfo")}>
                   <h6>3. Use of information</h6>
                 </a>
-                <a href="#prSharedData">
+                <a onClick={() => scrollToSection("prSharedData")}>
                   <h6>4. Data sharing</h6>
                 </a>
-                <a href="#prDataSecurity">
+                <a onClick={() => scrollToSection("prDataSecurity")}>
                   <h6>5. Data security</h6>
                 </a>
-                <a href="#prRights">
+                <a onClick={() => scrollToSection("prRights")}>
                   <h6>6. Your rights</h6>
                 </a>
-                <a href="#prCookies">
+                <a onClick={() => scrollToSection("prCookies")}>
                   <h6>7. Cookies</h6>
                 </a>
-                <a href="#prChanges">
+                <a onClick={() => scrollToSection("prChanges")}>
                   <h6>8. Changes to this policy</h6>
                 </a>
-                <a href="#prContacts">
+                <a onClick={() => scrollToSection("prContacts")}>
                   <h6>9. Contact us</h6>
                 </a>
               </div>
@@ -181,8 +200,6 @@ function AmploraPrivacyPolicy() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }

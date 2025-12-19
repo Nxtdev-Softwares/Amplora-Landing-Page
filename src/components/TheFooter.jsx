@@ -13,20 +13,17 @@ import "../styles/FooterStyles.css"
 function TheFooter () {
 
     const location = useLocation();
-        useEffect(() => {
-        const navType = window.performance.getEntriesByType("navigation")[0]?.type;
-    
-        if (location.hash) {
-          if (navType !== "reload") {
-            const el = document.querySelector(location.hash);
-            if (el) {
-              setTimeout(() => {
-                el.scrollIntoView({ behavior: "smooth" });
-              }, 100);
-            }
-          }
-        }
-      }, [location]);
+     const handleScroll = (id) => {
+    if (location.pathname === "/" || location.pathname === "") {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Optionally: redirect to landing page first
+      window.location.href = `/#${id}`;
+    }
+  };
 
     return (
       <>
@@ -42,7 +39,7 @@ function TheFooter () {
               </a>
               <h6>Automating your social media, from creation to posting.</h6>
               <a
-                href="/WaitListForm"
+                href="#/WaitListForm"
                 style={{ width: "100%" }}
               >
                 <button>Join Waitlist</button>
@@ -54,21 +51,21 @@ function TheFooter () {
                 <h5>Product</h5>
                 <div className="d-flex flex-column ms-1">
                   <a
-                    href="/#features"
+                    onClick={() => handleScroll("features")}
                     className="footer-links"
                   >
                     Features
                     <div className="underline-effect"></div>
                   </a>
                   <a
-                    href="/#pricing"
+                    onClick={() => handleScroll("pricing")}
                     className="footer-links"
                   >
                     Pricing
                     <div className="underline-effect"></div>
                   </a>
                   <a
-                    href="/#faq"
+                    onClick={() => handleScroll("faq")}
                     className="footer-links"
                   >
                     FAQ
@@ -94,14 +91,14 @@ function TheFooter () {
                 <h5>Support</h5>
                 <div className="d-flex flex-column ms-1">
                   <a
-                    href="/#faq"
+                    onClick={() => handleScroll("faq")}
                     className="footer-links"
                   >
                     FAQs
                     <div className="underline-effect"></div>
                   </a>
                   <a
-                    href="/#contact"
+                    onClick={() => handleScroll("contact")}
                     className="footer-links"
                   >
                     Contact US
@@ -115,14 +112,14 @@ function TheFooter () {
                 <h5>Legal</h5>
                 <div className="d-flex flex-column ms-1">
                   <a
-                    href="/AmploraPrivacyPolicy"
+                    href="#/AmploraPrivacyPolicy"
                     className="footer-links"
                   >
                     Privacy Policy
                     <div className="underline-effect"></div>
                   </a>
                   <a
-                    href="/TermsServices"
+                    href="#/TermsServices"
                     className="footer-links"
                   >
                     Terms of Service

@@ -67,6 +67,7 @@ function UpfrontPaymentPage() {
   const emailRef = useRef(null);
   const [socialMediaLink, setSocialMediaLink] = useState("");
   const socialMediaLinkRef = useRef(null);
+   const [privacyChecked, setPrivacyChecked] = useState(false);
   const [role, setRole] = useState("");
   const roleRef = useRef(null);
 
@@ -74,6 +75,9 @@ function UpfrontPaymentPage() {
   const [showSuccess, setShowSuccess] = useState(false)
   const [fadeOut, setFadeOut] = useState(false);
   const [paymentFailed, setPaymentFailed] = useState(false);
+
+  const [accepted, setAccepted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
       if (errorMsg) {
@@ -89,80 +93,73 @@ function UpfrontPaymentPage() {
       }
     }, [errorMsg]);
 
-  const addUserToWaitingList = async(payUpfront) => {
-    
-    console.log(name, email, role, agreed, selectedPlan);
-    if ((!name || name.trim() == "") || (!email || email.trim() == "") || (!role || role.trim() == "") || !agreed || (!selectedPlan || selectedPlan.trim() == "")) {
-      setErrorMsg(true);
-      return;
-    }else{
-      const agreed = document.getElementById("defaultCheck1").checked;
-      const data = {
-        name: document.getElementById("name").value,
-        website: document.getElementById("website").value,
-        email: document.getElementById("email").value,
-        jobTitle: document.getElementById("jobTitle").value,
-        agreed: agreed,
-        selectedPlan: document.getElementById("product-plan").value,
-        payUpfront: payUpfront,
-      };
+  // making to scroll to sections
+  const scrollToSection = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
 
-      const response = await api.post(
-        "/api/v1/partners/products/amplora/waiting-list/adduser",
-        data
-      );
-      if (response.status === 200) {
-        console.log(response.data);
-        if (response.data.status == "ok") {
-          if (response.data.launchPayment) {
-            payhere.onCompleted = function onCompleted(orderId) {
-              console.log("Payment completed. OrderID:" + orderId);
-              setShowSuccess(true);
-              // Note: validate the payment and show success or failure page to the customer
-            };
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-            // Payment window closed
-            payhere.onDismissed = function onDismissed() {
-              // Note: Prompt user to pay again or show an error page
-              console.log("Payment dismissed");
-            };
-
-            // Error occurred
-            payhere.onError = function onError(error) {
-              // Note: show an error page
-              console.log("Error:" + error);
-              setPaymentFailed(true);
-              const timeout = setTimeout(() => setPaymentFailed(false), 3000);
-            };
-
-            const paymentData = response.data.paymentData;
-            // alert(JSON.stringify(paymentData));
-            payhere.startPayment(paymentData);
-          }
-          // alert("Successfully added to the waiting list!");
-        }
-      }
-    }
-    setErrorMsg(false);
+  // Validation
+  if (!name.trim() || !email.trim() || !role.trim()) {
+    setErrorMsg("Please fill in all required fields");
+    return;
   }
 
-  const [selectedPlan, setSelectedPlan] = useState(null);
-  const [selectedPlanActive, setSelectedPlanActive] = useState(false);
-
-  const [plans, setPlans] = useState([]);
-  const getProductPlans = async() => {
-    const response = await api.get("/api/v1/partners/products/amplora/plans");
-    if (response.status === 200){
-      if (response.data.status == "ok"){
-        setPlans(response.data.plans);
-      }
-    }
+  if (!privacyChecked) {
+    setErrorMsg("You must agree to the Founder Terms");
+    return;
   }
 
-  useEffect(() => {
-    getProductPlans();
-  }, []);
+  setErrorMsg("");
+  setIsSubmitting(true);
 
+  const url = "https://api.sheety.co/13000793e3eae1c815a1c576886bea71/upfrontSignups/sheet1"; 
+
+  const body = {
+    sheet1: {
+      timestamp: new Date().toISOString(),
+      name: name.trim(),
+      email: email.trim(),
+      role: role.trim(),
+      socialMediaLink: socialMediaLink.trim(),
+      privacyAccepted: privacyChecked ? "Yes" : "No",
+    },
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+        throw new Error(`Submission failed with status ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Sheety response:", data);
+
+      // ✅ Reset form
+      setName("");
+      setEmail("");
+      setRole("");
+      setSocialMediaLink("");
+      setPrivacyChecked(false);
+
+    window.location.href = "https://yourdomain.com/payment";
+
+  } catch (err) {
+    console.error("Submission failed:", err);
+    setErrorMsg("Submission failed: " + err.message);
+    setIsSubmitting(false);
+  }
+};
   return (
     <>
       <Helmet>
@@ -182,7 +179,18 @@ function UpfrontPaymentPage() {
           exclusive access, product waiting list, SaaS beta program, notify me, early user registration"
         />
       </Helmet>
-      <NavBar />
+      
+      <div className="non-nav-logo d-flex justify-content-center align-items-center">
+        <a
+          href="#/"
+          className="d-flex gap-2 justify-content-center align-items-center"
+          style={{ textDecoration: "none" }}
+        >
+          <img src={AmploraLogo} alt="" />
+          <h1>Amplora</h1>
+        </a>
+      </div>
+
       {/* <LoadPayhereScript /> */}
       <div id="main-sec" className="waitlist-form-page">
         <div className="d-flex justify-content-center align-items-center flex-column container-fluid form-hero">
@@ -194,11 +202,11 @@ function UpfrontPaymentPage() {
                 first 5 founding creators.
               </h2>
               <div className="d-flex justify-content-center justify-content-lg-start gap-4">
-                <a href="#upfront-form-section">
-                  <button className="cta-btn">Get Full access</button>
+                <a>
+                  <button onClick={() => scrollToSection("upfront-form-section")} className="cta-btn">Get Full access</button>
                 </a>
-                <a href="#why-upfront-section">
-                  <button className="secondary-btn">Why Pay Upfront?</button>
+                <a >
+                  <button onClick={() => scrollToSection("why-upfront-section")} className="secondary-btn">Why Pay Upfront?</button>
                 </a>
               </div>
             </div>
@@ -222,14 +230,19 @@ function UpfrontPaymentPage() {
 
           <ScrollReveal className="fade-in-anime">
             <div className="form-container">
+              <form onSubmit={handleSubmit}>
               <div className="row d-flex justify-content-center">
                 <div className="col-12 col-md-6">
                   <div className={`name-row ${name ? "active" : ""}`}>
                     <label className="sale-float-label">Full Name</label>
+
+                    <input name="Source" type="hidden" value="Amplora Landing Page" />
+
                     <input
                       type="text"
                       id="name"
                       className="name-input"
+                      name="name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       ref={nameRef}
@@ -245,10 +258,11 @@ function UpfrontPaymentPage() {
                       type="email"
                       id="email"
                       className="email-input"
+                      name="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       ref={emailRef}
-                      onKeyDown={(e) => handleKeyDown(e, whatsappRef)}
+                      onKeyDown={(e) => handleKeyDown(e, roleRef)}
                       required
                     />
                   </div>
@@ -261,6 +275,7 @@ function UpfrontPaymentPage() {
                       id="jobTitle"
                       className="role-input"
                       value={role}
+                      name="role"
                       onChange={(e) => setRole(e.target.value)}
                       ref={roleRef}
                       required
@@ -280,10 +295,10 @@ function UpfrontPaymentPage() {
                       type="text"
                       id="website"
                       className="website-input"
+                      name="socialMediaLink"
                       value={socialMediaLink}
                       onChange={(e) => setSocialMediaLink(e.target.value)}
                       ref={socialMediaLinkRef}
-                      required
                     />
                   </div>
                 </div>
@@ -294,10 +309,10 @@ function UpfrontPaymentPage() {
                       className="form-check-input checkbox"
                       type="checkbox"
                       id="defaultCheck1"
-                    />
+                       checked={privacyChecked} onChange={(e) => setPrivacyChecked(e.target.checked)}/>
                     <p className="mb-2">
                       I agree Amplora’s{" "}
-                      <a href="/partners/products/amplora/privacy-policy">
+                      <a href="#/FounderTerms" target="_blank" rel="noopener noreferrer">
                         Founder Terms
                       </a>
                     </p>
@@ -308,11 +323,9 @@ function UpfrontPaymentPage() {
               <div className="row mb-3 mt-md-1 mt-2">
                 <button
                   className="cta-btn"
-                  onClick={() => {
-                    addUserToWaitingList(true);
-                  }}
+                  type="submit" disabled={isSubmitting}
                 >
-                  💥 Get Full Access Now
+                   {isSubmitting ? "Submitting..." : "Submit"}
                 </button>
                 <p className="btn-supports bottom">
                   Exclusive offer for the first 5 founders.
@@ -322,6 +335,7 @@ function UpfrontPaymentPage() {
               <p className="bottom-text">
                 Your info is 100% secure • No spam • Cancel anytime
               </p>
+              </form>
             </div>
           </ScrollReveal>
         </div>
@@ -383,8 +397,8 @@ function UpfrontPaymentPage() {
         </div>
 
         <div className="d-flex justify-content-center align-items-center flex-column waitlist-cta-section text-center">
-          <a href="#main-sec">
-            <ArrowUp className="top-move-btn" />
+          <a >
+            <ArrowUp className="top-move-btn"  onClick={() => scrollToSection("upfront-form-section")}/>
           </a>
 
           <div className="row d-flex justify-content-center align-items-start content">
@@ -399,8 +413,8 @@ function UpfrontPaymentPage() {
                 </h2>
               </Row>
               <div className="d-flex btn-container justify-content-start flex-column">
-                <a href="#upfront-form-section">
-                  <button className="main-btn">💥 Get Full Access Now</button>
+                <a style={{textDecoration: "none"}}>
+                  <button  onClick={() => scrollToSection("upfront-form-section")} className="main-btn">💥 Get Full Access Now</button>
                 </a>
                 <p>( Lifetime discount for first 5 founders, don’t wait. )</p>
               </div>
@@ -425,7 +439,7 @@ function UpfrontPaymentPage() {
                 <h4>Lifetime recognition as a founding member</h4>
               </div>
 
-              <a href="/partners/products/amplora/privacy-policy" id="policy">
+              <a href="#/FounderTerms" id="policy">
                 <p>View founderterms</p>
               </a>
             </div>
@@ -433,10 +447,8 @@ function UpfrontPaymentPage() {
         </div>
       </div>
 
-      <TheFooter />
-
       {errorMsg && (
-        <div id="error-message">⚠️ Please fill in all required fields.</div>
+        <div id="error-message">⚠️ {errorMsg}</div>
       )}
 
       {paymentFailed && (

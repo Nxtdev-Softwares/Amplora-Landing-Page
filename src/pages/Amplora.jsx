@@ -235,6 +235,13 @@ function Amplora() {
   }, 3000);
     };
 
+    const scrollToSection = (id) => {
+  const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
     return (
       <>
         <Helmet>
@@ -381,7 +388,7 @@ function Amplora() {
                 <BenefitCard
                   icon={drawing}
                   task="Know What Works"
-                  description="Amplora shows which posts actually get results by analyzing top creators and trends."
+                  description="Amplora shows which posts actually get results by analyzing the audience and past contents."
                 />
                 <BenefitCard
                   icon={contentPlanning}
@@ -443,10 +450,10 @@ function Amplora() {
             <h1>Spots are extremely limited - Claim yours now!</h1>
 
             <div className="d-flex">
-              <a href="/WaitListForm">
+              <a href="#/WaitListForm">
                 <button className="primary">Join FREE waitlist</button>
               </a>
-              <a href="/UpfrontPaymentPage">
+              <a href="#/UpfrontPaymentPage">
                 <button className="secondary">Get lifetime</button>
               </a>
             </div>
@@ -686,7 +693,7 @@ function Amplora() {
                 ]}
                 btnText="Join Early Access"
                 btnClassName="pro-btn"
-                buttonPath="WaitListForm"/>
+                buttonPath="#WaitListForm"/>
           </div>
 
           <div className="col-12 col-md-6 mt-5">
@@ -735,7 +742,7 @@ function Amplora() {
                   <h2 className="mb-5 pb-md-0">
                     🔒 This offer will never return.
                   </h2>
-                  <a href="/UpfrontPaymentPage">
+                  <a href="#/UpfrontPaymentPage">
                   <button className="limited-btn">
                     Claim Founder Deal
                   </button>
@@ -791,7 +798,7 @@ function Amplora() {
                     If you’ve got anything you want to clarify, we’re here to help.
                   </p>
 
-                  <a href="/#contact" className="faq-sec-cta-contact-btn">
+                  <a  onClick={() => scrollToSection("contact")} className="faq-sec-cta-contact-btn" style={{cursor: 'pointer'}}>
                     Contact Us
                   </a>
                 </div>
@@ -809,10 +816,10 @@ function Amplora() {
               <h5>Only a few spots left, act now to secure your place.</h5>
               <div className="d-flex justify-content-center align-items-center justify-content-md-start">
                 <ScrollReveal className="move-right-anime">
-                  <a href="WaitListForm">
+                  <a href="#/WaitListForm">
                     <button className="primary-btn">Join Free Waitlist</button>
                   </a>
-                  <a href="/UpfrontPaymentPage">
+                  <a href="#/UpfrontPaymentPage">
                     <button className="secondary-btn">
                       Claim founder Spot
                     </button>
@@ -1009,7 +1016,7 @@ function Amplora() {
                       <h6>
                         Your information is protected. Learn more in our{" "}
                         <a
-                          href="AmploraPrivacyPolicy"
+                          href="#/AmploraPrivacyPolicy"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -1017,7 +1024,7 @@ function Amplora() {
                         </a>{" "}
                         and{" "}
                         <a
-                          href="TermsServices"
+                          href="#/TermsServices"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
